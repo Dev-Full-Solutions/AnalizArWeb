@@ -1,0 +1,38 @@
+<section class="contenedor-principal-alertas my-4 mx-auto" id="contenedor-principal-alertas">
+    <section class="contenedor-alertas" id="contenedor-alertas">
+      <div class="alerta">
+        <button class="btn-nueva-alerta" id="btn-nueva-alerta" (click)="openModal()">+</button>
+        <h2 class="subtitulo-alerta">nueva alerta</h2>
+      </div>
+      <div *ngFor="let alerta of alertas;let i= index;" class="alerta" id="div-alerta1">
+        <h2 class="titulo-alerta">Alerta #{{i+1}}</h2>
+        <h4>{{alerta.medidor}}</h4>
+        <p class="texto-alerta" id="texto-alerta-alerta1">Si el consmo supera los <b>{{alerta.valor}}</b> w/h envio una alerta como precaucion</p>
+        <div class="contenedor-botones-alerta">
+            <button class="btn-alerta btn-alerta-editar" [routerLink]="['/alertas/', alerta.idAlerta]">editar</button>
+            <button class="btn-alerta btn-alerta-eliminar" (click)="removeAlert(alerta.idAlerta)">eliminar</button>
+        </div>
+    </div>
+    </section>
+    <form [formGroup]="alertasForm" class="formulario-nueva-alerta" id="addAlert">
+      <p class="title-formulario-alerta">nueva alerta</p>
+      <p class="text-danger">{{loginError}}</p>
+      <div class="inputContainer">
+        <input type="number" class="input" placeholder="Ingresa la cantidad de w/h" formControlName="valor" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <label for="" class="label"> Cantidad w/h </label>
+      </div>  
+      <div class="inputContainer">
+        <select class="tipo-alerta" name="medidor" id="medidor" formControlName="medidor">
+          <option class="label" *ngFor="let medidor of medidores" [value]="medidor.idMedidor" >{{ medidor.nombre }} - {{ medidor.identificador }}</option>
+        </select>
+      </div>
+      <div class="inputContainer">
+        <input type="date" name="typeAlert"class="input" formControlName="fechaAlta" id="typeAlert">
+      </div>
+      <div class="btnContainer">
+        <button type="submit" class= "submitBtn saveBtn" (click)="saveAlert()" id="btn-save-nueva-alerta">Guardar</button>
+        <button type="button" class= "submitBtn cancelBtn" (click)="closeModal()" id="btn-close-nueva-alerta">Cancelar</button>
+      </div>
+    </form>
+  </section>
+ 
