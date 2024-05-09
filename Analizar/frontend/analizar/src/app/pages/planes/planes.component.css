@@ -101,7 +101,8 @@ section {
   .subscription-type label:hover {
     background-color: #4D8E4C;
     color: #fff;
-  }  
+  }
+
   button {
     background-color: #1F5834;
     color: #fff;
@@ -112,6 +113,7 @@ section {
     font-size: 1rem;
     cursor: pointer;
   }
+
   button.btn-alerta-editar,
   button.saveBtn {
       background-color: var(--green-700);
@@ -135,6 +137,7 @@ section {
       background-color: var(--white);
       color: var(--red);
   }
+  
   .error {
     color: red;
     position: relative;
