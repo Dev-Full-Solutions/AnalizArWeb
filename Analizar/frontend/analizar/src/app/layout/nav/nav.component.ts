@@ -50,5 +50,8 @@ export class NavComponent {
     submenu?.classList.remove('sidebar-activo');
     this.isClosed = true;
   }
-
+  changeFontSize(px: any) {
+    document.documentElement.style.fontSize = px + 'px';
+    console.log(document.documentElement.style, px);
+  }
 }
