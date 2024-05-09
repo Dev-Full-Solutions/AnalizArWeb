@@ -78,21 +78,21 @@ section {
 
 h2 {
   color: #1F5834;
-  font-size: 17px;
+  font-size: 1.06rem;
   font-weight: bolder;
   text-align: center;
 }
 
 h3 {
   color: #333;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: bold;
   text-align: center;
 }
 
 p {
   color: #666;
-  font-size: 11px;
+  font-size: 0.69rem;
   text-align: center;
 }
 
@@ -105,7 +105,7 @@ select {
   background-color: #f2f2f2;
   border: none;
   padding: 10px;
-  font-size: 14px;
+  font-size: 0.85rem;
   color: #333;
 }
 
@@ -124,7 +124,7 @@ button {
   border-radius: 6px;
   padding: 10px 20px;
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
@@ -182,7 +182,7 @@ button.cancelBtn:hover {
   color: red;
   position: relative;
   top: -10px;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 /* Formulario add producto */
 form.formulario-nueva-alerta {
@@ -198,7 +198,7 @@ form.formulario-nueva-alerta {
 p.title-formulario-alerta {
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.12rem;
 }
 
 div.inputContainer {
@@ -216,7 +216,7 @@ input.input {
   width: 100%;
   border: 1px solid var(--light-gray);
   border-radius: 7px;
-  font-size: 16px;
+  font-size: 1rem;
   padding: 0 20px;
   outline: none;
   background: none;
@@ -231,7 +231,7 @@ select.tipo-alerta {
   width: 100%;
   border: 1px solid var(--light-gray);
   border-radius: 7px;
-  font-size: 16px;
+  font-size: 1rem;
   padding: 0 20px;
   outline: none;
   background: none;
@@ -249,7 +249,7 @@ label.label {
   padding: 0 4px;
   background-color: var(--white);
   color: #111;
-  font-size: 16px;
+  font-size: 1rem;
   transition: 0.5s;
   z-index: 0;
 }
@@ -262,7 +262,7 @@ input.input:focus + label.label {
   top: -11px;
   left: 8px;
   z-index: 10;
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--green-700);
 }
@@ -271,7 +271,7 @@ input.input:not(:placeholder-shown)+ label.label {
   top: -7px;
   left: 3px;
   z-index: 10;
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 

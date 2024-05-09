@@ -1,14 +1,14 @@
 /* --- Bloque General - Títulos y Textos de AnalizAr --- */
 .titulos-h1{
     font-family: Roboto;
-    font-size: 31.5px;
+    font-size: 2rem;
     color: #4D8E4C;
     text-align: left;
 }
 
 .titulos-h2{
     font-family: Roboto;
-    font-size: 27px;
+    font-size: 1.7rem;
     color: #4D8E4C;
     text-align: center;
     padding: 50px;
@@ -16,7 +16,7 @@
 
 .titulos-h3{
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 1.12rem;
     color: #171715;
     text-align: left;
 }
@@ -160,12 +160,12 @@
     border-radius: 30px;  
     transition: all 0.7s ease; 
     padding: 8px;
-    font-size: 14px;
+    font-size: 0.87rem;
     background-color: #9ce0ba;   
 }
 
 .contenedor-textos:hover{
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     color: #1d971b;  
     background-color: #90e7b4; 
@@ -248,7 +248,7 @@ details[open] summary::before{
     background: #FFFFFF;
     border: 3px solid transparent;
     border-radius: 3px;
-    font-size: 17px;
+    font-size: 1.06rem;
     text-align: center;
     outline: none;
     line-height: 45px;
@@ -261,7 +261,7 @@ details[open] summary::before{
     right: 45px;
     bottom: 15px;
     z-index: 100;
-    font-size: 16px;
+    font-size: 1rem;
     opacity: 0;
 }
 
@@ -271,7 +271,7 @@ details[open] summary::before{
 }
 
 .formulario__input-error {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-bottom: 0;
     color: var(--red);
 }
@@ -330,7 +330,7 @@ details[open] summary::before{
 }
 
 .formulario__btn:hover {
-    font-size: 18px;
+    font-size: 1.12rem;
     box-shadow: #3b3b38 10px 5px 10px;
 }
 
