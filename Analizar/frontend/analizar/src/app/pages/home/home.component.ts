@@ -1,17 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   title1: string = 'AnalizAR, control total de tus consumos electricos a un click de distancia';
   title2: string = '<strong>Controlar el consumo eléctrico nunca fue tan fácil</strong>';
 
-  constructor( private fb: FormBuilder, private router: Router) {}
+  constructor( private fb: FormBuilder, private router: Router, private route: ActivatedRoute, 
+    private viewportScroller: ViewportScroller
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.route.fragment.pipe(
+      filter(fragment => !!fragment)
+    ).subscribe(fragment => {
+      this.scrollToFragment(fragment!);
+    });
+  }
+
+  private scrollToFragment(fragment: string): void {
+    const element = document.getElementById(fragment);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   nombreApellido: string = '';
   email: string = '';
   mensaje: string = '';

@@ -33,13 +33,13 @@
             <a class="nav-link" href="#">INICIO</a>
           </li>  
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" href="#servicios">SERVICIOS</a>
+            <a class="nav-link" [routerLink]="['/home']" fragment="servicios">SERVICIOS</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" href="#faq">FAQ</a>
+            <a class="nav-link" [routerLink]="['/home']" fragment="faq">FAQ</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" href="#contacto">CONTACTO</a>
+            <a class="nav-link" [routerLink]="['/home']" fragment="contacto">CONTACTO</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
             <a class="nav-link" routerLink="/productos">PRODUCTOS</a>
