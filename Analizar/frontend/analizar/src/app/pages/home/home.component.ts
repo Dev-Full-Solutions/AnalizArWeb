@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  title1: string = 'AnalizAR, control total de tus consumos electricos a un click de distancia';
+  title1: string = 'Optimizá tu energía para un futuro más sustentable';
   title2: string = '<strong>Controlar el consumo eléctrico nunca fue tan fácil</strong>';
 
   constructor( private fb: FormBuilder, private router: Router, private route: ActivatedRoute, 
