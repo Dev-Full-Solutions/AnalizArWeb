@@ -23,8 +23,12 @@
     --white-500: #E3ECE8;
     --red: #ff0009;
     --gris-verdoso: #3E584B;
+    --base-font-size: 16px;
 }
 /*          Generales           */
+html{
+    font-size: var(--base-font-size);
+}
 *{
     box-sizing: border-box;
     margin: 0;

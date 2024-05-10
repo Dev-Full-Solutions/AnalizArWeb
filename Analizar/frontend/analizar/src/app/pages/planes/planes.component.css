@@ -37,7 +37,7 @@ section {
   /* Establecer las reglas para el título del plan */
   .plan h2 {
     color: #1F5834;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: bolder;
     text-align: center;
   }
@@ -45,7 +45,7 @@ section {
   /* Establecer las reglas para el precio del plan */
   .plan h3 {
     color: #333;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bold;
     text-align: center;
   }
@@ -53,7 +53,7 @@ section {
   /* Establecer las reglas para las características del plan */
   .plan ul {
     color: #666;
-    font-size: 15px;
+    font-size: 0.94rem;
     text-align: center;
   }
   
@@ -101,7 +101,8 @@ section {
   .subscription-type label:hover {
     background-color: #4D8E4C;
     color: #fff;
-  }  
+  }
+
   button {
     background-color: #1F5834;
     color: #fff;
@@ -109,9 +110,10 @@ section {
     border-radius: 6px;
     padding: 10px 20px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
   }
+
   button.btn-alerta-editar,
   button.saveBtn {
       background-color: var(--green-700);
@@ -135,6 +137,7 @@ section {
       background-color: var(--white);
       color: var(--red);
   }
+  
   .error {
     color: red;
     position: relative;
