@@ -122,7 +122,7 @@
           <i class="formulario__validacion-estado fas fa-times-circle"></i>
         </div>
         <div *ngIf="formContact.get('nombreApellido')?.touched && formContact.get('nombreApellido')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Disculpe, debe ingresar nombre y apellido.</p>
+            <p class="formulario__input-error">Tenés que ingresar nombre y apellido.</p>
         </div>
       </div>
 
@@ -134,10 +134,10 @@
           <i class="formulario__validacion-estado fas fa-times-circle"></i>
         </div>
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Ingrese una dirección de mail</p>
+            <p class="formulario__input-error">Ingresá una dirección de mail</p>
         </div> 
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['pattern']" class="error email-error">
-            <p class="formulario__input-error">Recuerde, el correo puede contener letras, números, punto, debe tener el símbolo &#64; y el proveedor del servicio.</p>
+            <p class="formulario__input-error">Recordá, el correo puede contener letras, números, punto, debe tener el símbolo &#64; y el proveedor del servicio.</p>
         </div>        
       </div>
 
@@ -145,11 +145,11 @@
       <div class="formulario__grupo" id="grupo__mensaje">
         <label class="formulario__label">Mensaje</label>
         <div class="formulario__grupo-input">
-          <input type="text" class="formulario__input" name="mensaje" id="mensaje" formControlName="mensaje" placeholder="Exprese aquí el motivo de su contacto, si requiere de algún servicio específico o cualquier información que considere relevante. Gracias.">
+          <input type="text" class="formulario__input" name="mensaje" id="mensaje" formControlName="mensaje" placeholder="Por favor, contanos el motivo de tu contacto para brindarte la mejor asistencia posible.">
           <i class="formulario__validacion-estado fas fa-times-circle"></i>              
         </div>
         <div *ngIf="formContact.get('mensaje')?.touched && formContact.get('mensaje')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Por favor, déjenos un mensaje con el motivo de su solicitud de contacto.</p>
+            <p class="formulario__input-error">Por favor, dejanos un mensaje con el motivo de tu solicitud de contacto.</p>
         </div>  
       </div>
 
@@ -157,13 +157,13 @@
       <div class="formulario__grupo formulario__grupo-terminos" id="grupo__terminos">
         <label class="formulario__label">
           <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
-          <b class="formulario__span">Acepto los terminos y condiciones</b>
+          <b class="formulario__span">Acepto los términos y condiciones</b>
         </label>
       </div>
 
       <!-- Mensaje de campos requeridos -->
       <div class="formulario__mensaje" id="formulario__mensaje">
-      <p><i class="fas fa-exclamation-circle"><b>Error:</b> Por favor, complete correctamente los campos del formulario.</i></p>
+      <p><i class="fas fa-exclamation-circle"><b>Error:</b> Por favor, completá correctamente los campos del formulario.</i></p>
       </div>
 
       <!-- Grupo: Enviar -->

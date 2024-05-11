@@ -7,13 +7,13 @@
             <p class="text-danger">{{loginError}}</p>
             <div class="field email-field">
                 <div class="input-field">
-                  <input type="email" placeholder="Ingresa tu email" class="email" formControlName="email" required>
+                  <input type="email" placeholder="Ingresá tu email" class="email" formControlName="email" required>
                 </div>
                 <div *ngIf="loginDash.get('email')?.touched && loginDash.get('email')?.errors?.['required']" class="error email-error">
-                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un e-mail
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail
                 </div>
                 <div *ngIf="loginDash.get('email')?.touched && loginDash.get('email')?.errors?.['pattern']" class="error email-error">
-                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un e-mail válido
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail válido
                 </div>            
               </div>
 
@@ -21,26 +21,26 @@
                 <div class="input-field">
                   <input #password
                   [type]="show ? 'text' : 'password'"
-                    placeholder="Ingresa tu contraseña"
+                    placeholder="Ingresá tu contraseña"
                     class="cPassword"
                     formControlName="password"/>
                   <i [ngClass]="(password.type == 'password')? 'bx-hide':'bx-show'" class="bx show-hide" (click)="showPass()"></i>
                 </div>
                 <div *ngIf="loginDash.get('password')?.touched && loginDash.get('password')?.errors?.['required']" class="error cPassword-error">
-                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese una contraseña
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña
                 </div>
                 <div *ngIf="loginDash.get('password')?.touched && loginDash.get('password')?.errors?.['minlength']" class="error cPassword-error">
-                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un contraseña de más de 8 caracteres
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña de más de 8 caracteres
                 </div>
               </div>
             
             <div class="checkbox-text">
                 <div class="checkbox-content">
                     <input type="checkbox" id="logCheck">
-                    <label for="logCheck" class="text">Recuérdame</label>
+                    <label for="logCheck" class="text">Recordarme</label>
                 </div>
 
-                <a (click)="resetPass()" class="text signup-link">Olvidaste tu contraseña?</a>
+                <a (click)="resetPass()" class="text signup-link">¿Olvidaste tu contraseña?</a>
             </div>
 
             <div class="input-field button">
@@ -49,8 +49,8 @@
         </form>
         
             <div class="login-signup">
-                <span class="text">No estás registrado?
-                    <a href="/registro" class="text signup-link">Regístrate ahora</a>
+                <span class="text">¿No estás registrado?
+                    <a href="/registro" class="text signup-link">Registrate ahora</a>
                 </span> 
                 <a href="/" class="text signup-link">Volver al Inicio</a> 
             </div> 
@@ -59,18 +59,18 @@
 
        <!-- Formulario de "olvidó su contraseña"-->
         <div class="form signup" id="formReset">
-            <span class="title">Reestablece tu contraseña</span>
+            <span class="title">Reestablecé tu contraseña</span>
 
         <form [formGroup]="resetFormPass" (ngSubmit)="onResetPass()">
             <div class="input-field">
-                <input type="email" placeholder="Ingresa tu email" formControlName="email">
+                <input type="email" placeholder="Ingresá tu email" formControlName="email">
                 <i class="uil uil-envelope icon"></i>
             </div>
             <div *ngIf="resetFormPass.get('email')?.touched && resetFormPass.get('email')?.errors?.['required']" class="error email-error">
-                <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un e-mail
+                <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail
             </div>
             <div *ngIf="resetFormPass.get('email')?.touched && resetFormPass.get('email')?.errors?.['pattern']" class="error email-error">
-                <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un e-mail válido
+                <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail válido
             </div>  
             
             <div class="checkbox-text">
@@ -86,7 +86,7 @@
         </form>
         
             <div class="login-signup">
-                <span class="text">Estás registrado?
+                <span class="text">¿Estás registrado?
                     <a (click)="formLogin()" class="text login-link">Login</a>
                 </span>
             </div>
