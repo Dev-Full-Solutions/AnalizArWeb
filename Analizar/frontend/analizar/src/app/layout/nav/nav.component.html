@@ -9,8 +9,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
-      
+
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav fw-bold align-items-baseline">
             <!--
@@ -21,40 +21,40 @@
             <div class="container-font">
               <li class="nav-item font" (click)="changeFontSize(14)">
                 A
-              </li>  
+              </li>
               <li class="nav-item font" (click)="changeFontSize(16)">
                 A
-              </li>  
+              </li>
               <li class="nav-item font" (click)="changeFontSize(18)">
                 A
-              </li>  
+              </li>
             </div>
           <li class="nav-item">
-            <a class="nav-link" href="#">INICIO</a>
-          </li>  
-          <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']" fragment="servicios">SERVICIOS</a>
+            <a class="nav-link" href="#" tabindex="0" (keyup.enter)="handleEnterKey($event)">INICIO</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']" fragment="faq">FAQ</a>
+            <a class="nav-link" [routerLink]="['/home']" fragment="servicios" tabindex="0" (keyup.enter)="handleEnterKey($event)">SERVICIOS</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']" fragment="contacto">CONTACTO</a>
+            <a class="nav-link" [routerLink]="['/home']" fragment="faq" tabindex="0" (keyup.enter)="handleEnterKey($event)">FAQ</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" routerLink="/productos">PRODUCTOS</a>
-          </li>  
+            <a class="nav-link" [routerLink]="['/home']" fragment="contacto" tabindex="0" (keyup.enter)="handleEnterKey($event)">CONTACTO</a>
+          </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link" routerLink="/planes">PLANES</a>
-          </li>  
+            <a class="nav-link" routerLink="/productos" tabindex="0"(keyup.enter)="handleEnterKey($event)">PRODUCTOS</a>
+          </li>
+          <li *ngIf="!isLoggedIn()" class="nav-item">
+            <a class="nav-link" routerLink="/planes" tabindex="0"(keyup.enter)="handleEnterKey($event)">PLANES</a>
+          </li>
           <li *ngIf="!isAdmin()"class="nav-item">
-            <a class="nav-link" routerLink="/carrito">CARRITO<i class="bi bi-cart-fill fs-4"></i></a>
-          </li>  
+            <a class="nav-link" routerLink="/carrito" tabindex="0"(keyup.enter)="handleEnterKey($event)">CARRITO<i class="bi bi-cart-fill fs-4"></i></a>
+          </li>
           <li *ngIf="!isLoggedIn()" class="nav-item">
-            <a class="nav-link btn btn-green px-4 rounded-pill" routerLink="/login">INGRESAR</a>
+            <a class="nav-link btn btn-green px-4 rounded-pill" routerLink="/login" tabindex="0"(keyup.enter)="handleEnterKey($event)">INGRESAR</a>
           </li>
           <li *ngIf="isLoggedIn()" class="nav-item">
-            <a class="nav-link btn btn-green px-4 rounded-pill" (click)="logout()">CERRAR SESION</a>
+            <a class="nav-link btn btn-green px-4 rounded-pill" (click)="logout()" tabindex="0"(keyup.enter)="handleEnterKey($event)">CERRAR SESION</a>
           </li>
         </ul>
       </div>
@@ -62,13 +62,13 @@
   </nav>
   <nav id="submenu" class="m-0 sidebar">
     <ul class="list-unstyled bg-green m-auto align-items-center">
-      <li *ngIf="!isAdmin()" (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" href="/dashboard-client">Dashboard</a></li>
-      <li *ngIf="isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" href="/dashboard-admin">Dashboard Admin</a></li>
+      <li *ngIf="!isAdmin()" (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" href="/dashboard-client" tabindex="0"(keyup.enter)="handleEnterKey($event)">Dashboard</a></li>
+      <li *ngIf="isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" href="/dashboard-admin" tabindex="0"(keyup.enter)="handleEnterKey($event)">Dashboard Admin</a></li>
       <!-- <li class="list-sidebar"><a class="list-sidebar-item" routerLink="/historial">Historial</a></li> -->
-      <li *ngIf="!isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" routerLink="/alertas">Alertas</a></li>
-      <li class="list-sidebar" (click)="closeSidebar()" ><a class="list-sidebar-item" routerLink="/productos">Productos</a></li>
-      <li class="list-sidebar" (click)="closeSidebar()" ><a class="list-sidebar-item" routerLink="/planes">Planes</a></li>
-      <li *ngIf="!isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" routerLink="/medidores">Medidores</a></li>
+      <li *ngIf="!isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" routerLink="/alertas" tabindex="0"(keyup.enter)="handleEnterKey($event)">Alertas</a></li>
+      <li class="list-sidebar" (click)="closeSidebar()" ><a class="list-sidebar-item" routerLink="/productos" tabindex="0"(keyup.enter)="handleEnterKey($event)">Productos</a></li>
+      <li class="list-sidebar" (click)="closeSidebar()" ><a class="list-sidebar-item" routerLink="/planes" tabindex="0"(keyup.enter)="handleEnterKey($event)">Planes</a></li>
+      <li *ngIf="!isAdmin()"  (click)="closeSidebar()" class="list-sidebar"><a class="list-sidebar-item" routerLink="/medidores" tabindex="0"(keyup.enter)="handleEnterKey($event)">Medidores</a></li>
       <!-- <li class="list-sidebar"><a class="list-sidebar-item" routerLink="/mi-cuenta">Cuenta</a></li> -->
     </ul>
   </nav>
