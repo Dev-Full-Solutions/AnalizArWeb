@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'alertas',
     'consumos',
     'ecommerce',
+    'iluminacion',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
