@@ -3,14 +3,14 @@
   <p>Adquirí nuestros productos y empezá a optimizar <strong>"tus consumos eléctricos."</strong> Con AnalizAr, ahorro y cuidado medioambiental van de la mano.</p>
   
     <div class="row" id="productos">
-        <div class="col col-4" *ngFor="let producto of productos">
+        <div class="col col-4" *ngFor="let producto of productos; let in = index">
             <div class="card border-green-1 producto">
                 <img class="producto-imagen"  [src]="producto.rutaImagen" alt="Descripción de la imagen del producto">
                 <div class="">
                     <h2>{{producto.nombre}}</h2>
                     <h3>Precio: <span>$ {{producto.precio}}</span></h3>
                     <p>{{producto.descripcion}}</p>
-                    <select *ngIf="isAdmin() == false" class="producto-selector" [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+                    <select *ngIf="isAdmin() == false" class="producto-selector" [(ngModel)]="opcionSeleccionado[in]" (change)="capturar(in)">
                         <option *ngFor="let valor of counter(producto.cantidadDisponible);let i = index" [value]="i + 1">{{i + 1}}</option>
                     </select>
                     <button *ngIf="isAdmin() == false" [disabled]="producto.cantidadDisponible <= 0" class="producto-botón" (click)="agregarCarrito(producto,verSeleccion,'medidor')">{{producto.cantidadDisponible > 0 ? "Agregar al carrito" : "Sin stock"}}</button>

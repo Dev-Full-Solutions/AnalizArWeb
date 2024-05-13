@@ -13,7 +13,7 @@ export class ProductosComponent implements OnInit {
   productos: any[]=[];
   categorias: any[] = [];
   counter = Array;
-  opcionSeleccionado: string = '1';
+  opcionSeleccionado: number[] = [];
   verSeleccion: number = 1;
   insertProducto!: FormGroup;
   loginError: string = '';
@@ -52,9 +52,9 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
-  capturar() {
+  capturar(indice:number) {
     // Pasamos el valor seleccionado a la variable verSeleccion
-    this.verSeleccion = Number(this.opcionSeleccionado);
+    this.verSeleccion = Number(this.opcionSeleccionado[indice]);
   }
   //Agregar producto
   addProducto(){
