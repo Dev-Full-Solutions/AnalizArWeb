@@ -18,6 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { EditAlertaComponent } from './alertas/edit-alerta/edit-alerta.component';
 import { MedidoresComponent } from './medidores/medidores.component';
 import { EditProductoComponent } from './productos/edit-producto/edit-producto.component';
+import { IluminacionComponent } from './iluminacion/iluminacion.component';
+import { EditIluminacionComponent } from './iluminacion/edit-iluminacion/edit-iluminacion.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EditProductoComponent } from './productos/edit-producto/edit-producto.c
     HomeComponent,
     EditAlertaComponent,
     MedidoresComponent,
-    EditProductoComponent
+    EditProductoComponent,
+    IluminacionComponent,
+    EditIluminacionComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +54,8 @@ import { EditProductoComponent } from './productos/edit-producto/edit-producto.c
     Pagina404Component,
     AlertasComponent,
     EditAlertaComponent,
+    IluminacionComponent,
+    EditIluminacionComponent,
     LoginComponent,
     DashboardClienteComponent,
     HistorialComponent,

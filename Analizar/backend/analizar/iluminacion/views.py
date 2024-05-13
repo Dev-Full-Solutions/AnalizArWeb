@@ -15,8 +15,8 @@ from rest_framework import status
 
 # Create your views here.
 def getIluminacion(request):
-    medidores = list(Iluminacion.objects.values())#Traigo todos los usaurios registrados
-    data = medidores
+    iluminacion = list(Iluminacion.objects.values())#Traigo todos los usaurios registrados
+    data = iluminacion
     return JsonResponse(data, safe=False)
 
 class addIluminacion(APIView):
@@ -40,10 +40,36 @@ class getIluminacionByUser(View):
 @csrf_exempt
 def deleteIluminacion(request, id):
     try:
-        Iluminacion = Iluminacion.objects.get(idMedidor=id)
-        Iluminacion.delete()
-        return JsonResponse({'message': 'Medidor eliminado correctamente'})
+        iluminacion = Iluminacion.objects.get(idIluminacion=id)
+        iluminacion.delete()
+        return JsonResponse({'message': 'Iluminacion eliminado correctamente'})
     except Iluminacion.DoesNotExist:
-        return JsonResponse({'error': 'El medidor no existe'}, status=status.HTTP_404_NOT_FOUND)
+        return JsonResponse({'error': 'La Iluminacion no existe'}, status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+class editIluminacion(APIView):
+    def put(self, request, id):
+        try:
+            iluminacion = Iluminacion.objects.get(idIluminacion=id)
+        except Iluminacion.DoesNotExist:
+            return JsonResponse({'error': 'La Iluminacion no existe'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = IluminacionSerializer(iluminacion, data=request.data, context={'request': request}, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'La Iluminacion ha sido actualizada correctamente'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Lo siento, ocurrió un error al editar la Iluminacion. Revise los campos que estén completos.',
+                            'validation_errors': serializer.errors,
+                            'alertaNoExiste': False},
+                            status=status.HTTP_400_BAD_REQUEST)
+class getIluminacionById(APIView):
+    def get(self, request, id):
+        try:
+            alerta = Iluminacion.objects.get(idIluminacion=id)
+        except Iluminacion.DoesNotExist:
+            return JsonResponse({'error': 'La Iluminacion no existe'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = IluminacionSerializer(alerta)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+

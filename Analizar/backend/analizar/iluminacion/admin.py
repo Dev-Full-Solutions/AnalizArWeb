@@ -6,4 +6,4 @@ from .models import Iluminacion
 
 @admin.register(Iluminacion)
 class IluminacionAdmin(admin.ModelAdmin):
-    list_display = ('idIluminacion', 'nombre', 'detalle', 'identificador')
+    list_display = ('idIluminacion', 'nombre', 'detalle', 'identificador', 'intensidad', 'encendido')

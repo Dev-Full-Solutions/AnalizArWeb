@@ -1,0 +1,19 @@
+<section class="contenedor-principal-alertas my-4 mx-auto" id="contenedor-principal-alertas">
+    <form  [formGroup]="editForm" class="formulario-nueva-alerta" id="editAlert">
+        <p class="text-danger">{{loginError}}</p>
+        <p class="title-formulario-alerta">Operar sistema de Iluminacion</p>
+        <div class="inputContainer">
+          <input type="hidden" name="idAlerta" id="input-idAlerta-edit">
+          <input type="number" formControlName="intensidad" class="input" placeholder="Modificar la intensidad de la iluminacion" id="input-cantidadwh-edit">
+          <label for="" class="label"> Intensidad </label>
+        </div>
+        <div class="inputContainer">
+            <input type="checkbox" formControlName="encendido" class="input" placeholder="Encender o apagar" id="input-cantidadwh-edit">
+            <label for="" class="label"> Encendido </label>
+          </div>
+        <div class="btnContainer">
+          <button type="button" class= "submitBtn saveBtn" (click)="updateIluminacion()" id="btn-save-edit-alerta">Guardar</button>
+          <button type="button" class= "submitBtn cancelBtn" routerLink="/iluminacion" id="btn-close-edit-alerta">Cancelar</button>
+        </div>
+      </form>
+</section>
