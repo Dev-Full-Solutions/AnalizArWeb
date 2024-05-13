@@ -2,28 +2,37 @@
     <section>
         <div class="signupFrm">
             <div class="wrapper">
-                <form class="form" (ngSubmit)="onSubmit()" [formGroup]="registroForm" autocomplete="nope">
-    
+                <form class="form" (ngSubmit)="onSubmit()" [formGroup]="registroForm" autocomplete="nope" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+
                     <p class="title"> Registrarse </p>
-    
+
                     <div class="inputContainer">
-                        <input type="text" class="input" placeholder="a" id="name" formControlName="nombre" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="text" class="input" placeholder="a" id="name" formControlName="nombre" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="name" class="label">Nombre<abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('nombre')?.touched && registroForm.get('nombre')?.errors?.['required']" class="error">
                         <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un nombre
                     </div>
-                    
+
                     <div class="inputContainer">
-                        <input type="text" class="input" placeholder="a" id="apellido" formControlName="apellido" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="text" class="input" placeholder="a" id="apellido" formControlName="apellido" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="apellido" class="label">Apellido<abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('apellido')?.touched && registroForm.get('apellido')?.errors?.['required']" class="error">
                         <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un apellido
                     </div>
-    
+
                     <div class="inputContainer">
-                        <input type="email" class="input" placeholder="a" id="email" title="Ejemplo: correo@email.com" formControlName="email" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="email" class="input" placeholder="a" id="email" title="Ejemplo: correo@email.com" formControlName="email" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="email" class="label">Email<abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('email')?.touched && registroForm.get('email')?.errors?.['required']" class="error">
@@ -34,7 +43,10 @@
                     </div> 
     
                     <div class="inputContainer">
-                        <input type="tel" class="input" placeholder="a" title="Ejemplo: 3514643128" id="telefono" minlength="10" formControlName="telefono" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="tel" class="input" placeholder="a" title="Ejemplo: 3514643128" id="telefono" minlength="10" formControlName="telefono" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="telefono" class="label">Celular<abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('telefono')?.touched && registroForm.get('telefono')?.errors?.['required']" class="error">
@@ -45,7 +57,10 @@
                     </div> 
     
                     <div class="inputContainer">
-                        <input type="password" class="input" placeholder="a" id="pass" title="dato requerido" formControlName="password" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="password" class="input" placeholder="a" id="pass" title="dato requerido" formControlName="password" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="pass" class="label">Contraseña <abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('password')?.touched && registroForm.get('password')?.errors?.['required']" class="error">
@@ -57,9 +72,12 @@
                     <div *ngIf="registroForm.get('password')?.touched && registroForm.get('password')?.errors?.['maxlength']" class="error">
                         <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña de menos de 30 carácteres
                     </div>
-    
+
                     <div class="inputContainer">
-                        <input type="password" class="input" placeholder="a" title="dato requerido" id="passConfirm" formControlName="confirmPassword" required>
+                      <label for="input">
+                        <span class="required">*</span>
+                     </label>
+                        <input type="password" class="input" placeholder="a" title="dato requerido" id="passConfirm" formControlName="confirmPassword" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
                         <label for="passConfirm" class="label">Confirmar contraseña <abbr title="dato requerido" aria-label="required">*</abbr></label>
                     </div>
                     <div *ngIf="registroForm.get('confirmPassword')?.touched && registroForm.get('confirmPassword')?.errors?.['required']" class="error">
@@ -79,8 +97,8 @@
                     
                     <div *ngIf="loginError" class="text-danger">{{ loginError }}</div>
 
-                    <input type="submit" class="submitBtn" value="Registrarse">
-    
+                    <input type="submit" class="submitBtn" value="Registrarse" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+
                     <div class="login-signup">
                         <span class="text">¿Ya estás registrado?
                             <a (click)="linkLogin()" class="text signup-link">Ingresá ahora</a>

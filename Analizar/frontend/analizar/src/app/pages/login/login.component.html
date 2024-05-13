@@ -3,7 +3,7 @@
         <div class="form login">
             <span class="title">Login</span>
 
-        <form [formGroup]="loginDash" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginDash" (ngSubmit)="onSubmit()" tabindex="0" (keyup.enter)="handleEnterKey($event)">
             <p class="text-danger">{{loginError}}</p>
             <div class="field email-field">
                 <div class="input-field">
@@ -19,12 +19,15 @@
 
               <div class="field confirm-password">
                 <div class="input-field">
+                  <label for="email">
+                    <span class="required">*</span>
+                 </label>
                   <input #password
                   [type]="show ? 'text' : 'password'"
                     placeholder="Ingresá tu contraseña"
                     class="cPassword"
-                    formControlName="password"/>
-                  <i [ngClass]="(password.type == 'password')? 'bx-hide':'bx-show'" class="bx show-hide" (click)="showPass()"></i>
+                    formControlName="password" tabindex="0" (keyup.enter)="handleEnterKey($event)"/>
+                  <i [ngClass]="(password.type == 'password')? 'bx-hide':'bx-show'" class="bx show-hide" (click)="showPass()" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
                 </div>
                 <div *ngIf="loginDash.get('password')?.touched && loginDash.get('password')?.errors?.['required']" class="error cPassword-error">
                     <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña
@@ -33,7 +36,7 @@
                     <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña de más de 8 caracteres
                 </div>
               </div>
-            
+
             <div class="checkbox-text">
                 <div class="checkbox-content">
                     <input type="checkbox" id="logCheck">
@@ -44,10 +47,10 @@
             </div>
 
             <div class="input-field button">
-                <input type="submit" value="Ingresar"/>
+                <input type="submit" value="Ingresar" tabindex="0" (keyup.enter)="handleEnterKey($event)"/>
             </div>
         </form>
-        
+
             <div class="login-signup">
                 <span class="text">¿No estás registrado?
                     <a href="/registro" class="text signup-link">Registrate ahora</a>
@@ -61,7 +64,7 @@
         <div class="form signup" id="formReset">
             <span class="title">Reestablecé tu contraseña</span>
 
-        <form [formGroup]="resetFormPass" (ngSubmit)="onResetPass()">
+        <form [formGroup]="resetFormPass" (ngSubmit)="onResetPass()" tabindex="0" (keyup.enter)="handleEnterKey($event)">
             <div class="input-field">
                 <input type="email" placeholder="Ingresá tu email" formControlName="email">
                 <i class="uil uil-envelope icon"></i>
@@ -75,16 +78,16 @@
             
             <div class="checkbox-text">
                 <div class="checkbox-content">
-                    <input type="checkbox" id="sigCheck">
+                    <input type="checkbox" id="sigCheck" tabindex="0" (keyup.enter)="handleEnterKey($event)">
                     <label for="sigCheck" class="text">Recuerdo mi usuario</label>
                 </div>
             </div>
 
             <div class="input-field button">
-                <input type="button" value="Reestablecer contraseña">
+                <input type="button" value="Reestablecer contraseña" tabindex="0" (keyup.enter)="handleEnterKey($event)">
             </div>
         </form>
-        
+
             <div class="login-signup">
                 <span class="text">¿Estás registrado?
                     <a (click)="formLogin()" class="text login-link">Login</a>

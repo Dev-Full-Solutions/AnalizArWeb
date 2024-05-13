@@ -2,7 +2,7 @@
 <div class="contenedor-superior">
     <div class="contenedor-superior-item1">
     <h1 class="titulos-h1" id="titulo-principal" (mousemove)="cambiarTitulo()" (mouseout)="restaurarTitulo()"><strong>Controlar el consumo
-    eléctrico nunca fue tan fácil</strong></h1>        
+    eléctrico nunca fue tan fácil</strong></h1>
     <h3><strong class="titulos-h3">AnalizAr te brinda la capacidad de comprender tu consumo de energía eléctrica, permitiéndote estimar tus gastos mensuales, realizar comparaciones con meses anteriores ¡y mucho más! Descubrí tu consumo de luz de manera intuitiva y tomá el control de tus gastos energéticos.</strong></h3>
     </div>
     <div class="contenedor-superior-item2">
@@ -18,28 +18,28 @@
         <div class="contenedor-imagen">
           <img src="../assets/img/fondo2b.png" alt="usuario revisando informes en la aplicación analizar" title="Informes AnalizAr" id="imagen-servicios" (mouseover)="cambiarImagenServicios()" (mouseout)="restaurarImagenServicios()"/>
         </div>
-        <div class="contenedor-tabla">          
+        <div class="contenedor-tabla">
           <div class="contenedor-item1">
             <h3 class="titulos-h3">Gestioná tu consumo eléctrico de manera eficiente con nuestra aplicación. Accedé fácilmente a toda la información que necesites, ¡desde cualquier dispositivo!</h3>
           </div>
-          <div class="contenedor-item contenedor-item2">            
+          <div class="contenedor-item contenedor-item2">
             <p style="text-align: center;">Nivel de Consumo Diario</p>
           </div>
-          <div class="contenedor-item contenedor-item3">            
+          <div class="contenedor-item contenedor-item3">
             <p style="text-align: center">Nivel de Consumo Mensual</p>
           </div>
-          <div class="contenedor-item contenedor-item4">            
+          <div class="contenedor-item contenedor-item4">
             <p style="text-align: center">Costo Estimado</p>
           </div>
-          <div class="contenedor-item contenedor-item5">            
+          <div class="contenedor-item contenedor-item5">
             <p style="text-align: center">Historial de Consumo</p>
           </div>
-          <div class="contenedor-item contenedor-item6">            
+          <div class="contenedor-item contenedor-item6">
             <p style="text-align: center">Configuración de Alertas</p>
           </div>
         </div>
       </div>
-           
+
       <!-- Sección media de la página -->
       <!-- Tercer bloque -->
       <div class="contenedor-comentarios">
@@ -66,7 +66,7 @@
             <p style="text-align: center">"Las alertas de AnalizAr son un gran recurso. Me ayudan a supervisar mi consumo de luz de forma efectiva, brindándome un recordatorio amigable para ahorrar energía y dinero."</p>
           </div>
         </div>
-      </div>     
+      </div>
 </section>
 <section class="seccion__faq" aria-labelledby="titulo-faq">
     <h2 class="titulos-h2" id="faq"><strong>FAQ</strong></h2>
@@ -106,7 +106,7 @@
       <summary>5. ¿La aplicación está disponible en varios idiomas?</summary>
       <div>
         <p>
-          Actualmente, la aplicación está disponible en español. Sin embargo, estamos trabajando constantemente para expandir nuestro soporte de idiomas y mejorar la accesibilidad para nuestros usuarios. 
+          Actualmente, la aplicación está disponible en español. Sin embargo, estamos trabajando constantemente para expandir nuestro soporte de idiomas y mejorar la accesibilidad para nuestros usuarios.
         </p>
       </div>
     </details>
@@ -115,13 +115,13 @@
     <div class="cabecera">
       <h2 class="titulos-h2" id="contacto"><strong>CONTACTO</strong></h2>
     </div>
-    <form [formGroup]="formContact" (ngSubmit)="onSubmit()" class="formulario">                  
+    <form [formGroup]="formContact" (ngSubmit)="onSubmit()" class="formulario" tabindex="0" (keyup.enter)="handleEnterKey($event)">
       <!-- Grupo: Nombre -->
       <div class="formulario__grupo" id="grupo__nombre">
         <label class="formulario__label">Nombre y Apellido</label>
         <div class="formulario__grupo-input">
-          <input type="text" class="formulario__input" name="nombre" id="nombre" formControlName="nombreApellido" placeholder="Nombre y Apellido">
-          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+          <input type="text" class="formulario__input" name="nombre" id="nombre" formControlName="nombreApellido" placeholder="Nombre y Apellido" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+          <i class="formulario__validacion-estado fas fa-times-circle" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
         </div>
         <div *ngIf="formContact.get('nombreApellido')?.touched && formContact.get('nombreApellido')?.errors?.['required']" class="error email-error">
             <p class="formulario__input-error">Tenés que ingresar nombre y apellido.</p>
@@ -132,16 +132,16 @@
       <div class="formulario__grupo" id="grupo__correo">
         <label class="formulario__label">Correo Electrónico</label>
         <div class="formulario__grupo-input">
-          <input type="email" class="formulario__input" name="correo" id="correo" formControlName="email" placeholder="nombre@gmail.com">
-          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+          <input type="email" class="formulario__input" name="correo" id="correo" formControlName="email" placeholder="nombre@gmail.com" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+          <i class="formulario__validacion-estado fas fa-times-circle" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
         </div>
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['required']" class="error email-error">
+
             <p class="formulario__input-error">Ingresá una dirección de mail</p>
         </div> 
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['pattern']" class="error email-error">
             <p class="formulario__input-error">Recordá, el correo puede contener letras, números, punto, debe tener el símbolo &#64; y el proveedor del servicio.</p>
-        </div>        
-      </div>
+        </div>
 
       <!-- Grupo: Mensaje -->
       <div class="formulario__grupo" id="grupo__mensaje">
@@ -152,7 +152,7 @@
         </div>
         <div *ngIf="formContact.get('mensaje')?.touched && formContact.get('mensaje')?.errors?.['required']" class="error email-error">
             <p class="formulario__input-error">Por favor, dejanos un mensaje con el motivo de tu solicitud de contacto.</p>
-        </div>  
+        </div>
       </div>
 
       <!-- Grupo: Términos y Condiciones -->
@@ -171,7 +171,7 @@
       <!-- Grupo: Enviar -->
       <div class="formulario__grupo formulario__grupo-btn-enviar">
         <!-- <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado satisfactoriamente. En breve nos comunicaremos con Ud.</p> -->
-        <button type="submit" class="formulario__btn">Enviar</button>            
+        <button type="submit" class="formulario__btn" tabindex="0" (keyup.enter)="handleEnterKey($event)">Enviar</button>
       </div>
     </form>
   </section>

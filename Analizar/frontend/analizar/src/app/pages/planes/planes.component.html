@@ -1,6 +1,6 @@
 <section>
     <h1>Elegí el plan que se adapte a tus necesidades</h1>
-    <p>¡Hola, gracias por llegar hasta aquí! Recordá que por defecto está seleccionada la opción de suscripción <strong>"Mensual"</strong>. Pero si optás por la suscripción <strong>"Anual"</strong> podés acceder a importantes beneficios en tus planes y/o productos. Consultá las características de cada uno de ellos.</p>
+    <p>¡Hola, gracias por llegar hasta aquí! Recordá que por defecto está seleccionada la opción de suscripción <strong>Mensual</strong>. Pero si optás por la suscripción <strong>Anual</strong> podés acceder a importantes beneficios en tus planes y/o productos. Consultá las características de cada uno de ellos.</p>
     <!-- <div class="row"> 
         <div class="col">
           <div class="subscription-type">
@@ -8,7 +8,7 @@
             <label for="mensual">Mensual</label>
           </div>
         </div>
-        
+
         <div class="col">
           <div class="subscription-type">
             <input type="radio" id="anual" name="subscription">
@@ -21,17 +21,17 @@
       <div class="col" *ngFor="let servicio of servicios">
         <div class="plan">
           <h2>{{servicio.nombre}}</h2>
-          <h3 class="precio">$ {{servicio.precio}}/mes</h3>          
+          <h3 class="precio">$ {{servicio.precio}}/mes</h3>
           <ul>
             <li *ngFor="let caracteristica of servicio.caracteristicas">{{ caracteristica }}.</li>
           </ul>
-          <button *ngIf="isAdmin() == false" class="contratar" (click)="agregarCarrito(servicio,'plan')">Contratar</button>
+          <button *ngIf="isAdmin() == false" class="contratar" (click)="agregarCarrito(servicio,'plan')" tabindex="0" (keyup.enter)="handleEnterKey($event)">Contratar</button>
           <div class="d-flex justify-content-evenly" *ngIf="isAdmin() == true">
-            <button [routerLink]="['/productos/', servicio.id]" class="bi bi-pencil-fill saveBtn"></button>
-            <button (click)="removeProducto(servicio.id)" class="bi bi-trash-fill cancelBtn"></button>
+            <button [routerLink]="['/productos/', servicio.id]" class="bi bi-pencil-fill saveBtn" tabindex="0" (keyup.enter)="handleEnterKey($event)"></button>
+            <button (click)="removeProducto(servicio.id)" class="bi bi-trash-fill cancelBtn" tabindex="0" (keyup.enter)="handleEnterKey($event)"></button>
           </div>
         </div>
       </div>
-    </div>    
-    
-</section>  
+    </div>
+
+</section>
