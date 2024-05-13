@@ -5,6 +5,7 @@ import { AlertasService } from 'src/app/service/alertas.service';
 import { MedidoresService } from 'src/app/service/medidores.service';
 
 import { Alert } from './Alert';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -83,13 +84,35 @@ constructor(private router: Router, private alertaService: AlertasService, priva
  }
 
  removeAlert(id:number){  
-  this.alertaService.removeAlertas(id).subscribe((alert) => {
-    //console.log('Alerta eliminada con éxito:', alert);
-    this.closeModal();
-    this.getAlerts()
-  }, (error: any) => {
-    console.error('Hubo un error al eliminar la alerta', error);
-  })
+
+  Swal.fire({
+    title: "Estás seguro de eliminar la alerta?",
+    text: "No podrás revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      this.alertaService.removeAlertas(id).subscribe((alert) => {
+        //console.log('Alerta eliminada con éxito:', alert);
+        this.closeModal();
+        this.getAlerts()
+      }, (error: any) => {
+        console.error('Hubo un error al eliminar la alerta', error);
+      })
+
+      Swal.fire({
+        title: "Eliminada!",
+        text: "La alerta ha sido eliminada con éxito",
+        icon: "success"
+      });
+    }
+  });
+
+  
 
  }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { retry } from 'rxjs';
 import { ProductosService } from 'src/app/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carrito',
@@ -141,7 +142,19 @@ export class CarritoComponent implements OnInit {
   }
 
   eliminarItem(id:string, tipoProducto:string){
-    let indice = 0
+
+    Swal.fire({
+      title: "Estás seguro de eliminar el elemento del carrito?",
+      text: "No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+  
+        let indice = 0
 
     for(let i = 0; i < this.datos.length; i++){
       if(this.datos[i].id === id){
@@ -162,6 +175,16 @@ export class CarritoComponent implements OnInit {
        
       }
     }
+  
+        Swal.fire({
+          title: "Eliminado!",
+          text: "El producto ha sido eliminado del carrito con éxito",
+          icon: "success"
+        });
+      }
+    });
+
+    
   }
 
   obtenerCarritoLocalStorage(){
