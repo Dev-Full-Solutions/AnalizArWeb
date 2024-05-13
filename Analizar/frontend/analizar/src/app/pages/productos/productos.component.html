@@ -1,7 +1,7 @@
 <section>
   <h1>Catálogo de medidores inteligentes disponibles</h1>
   <p>Adquiere nuestros productos y comienza a optimizar <strong>"tus consumos eléctricos."</strong></p>
-  
+
     <div class="row" id="productos">
         <div class="col col-4" *ngFor="let producto of productos; let in = index">
             <div class="card border-green-1 producto">
@@ -13,10 +13,10 @@
                     <select *ngIf="isAdmin() == false" class="producto-selector" [(ngModel)]="opcionSeleccionado[in]" (change)="capturar(in)">
                         <option *ngFor="let valor of counter(producto.cantidadDisponible);let i = index" [value]="i + 1">{{i + 1}}</option>
                     </select>
-                    <button *ngIf="isAdmin() == false" [disabled]="producto.cantidadDisponible <= 0" class="producto-botón" (click)="agregarCarrito(producto,verSeleccion,'medidor')">{{producto.cantidadDisponible > 0 ? "Agregar al carrito" : "Sin stock"}}</button>
+                    <button *ngIf="isAdmin() == false" [disabled]="producto.cantidadDisponible <= 0" class="producto-botón" (click)="agregarCarrito(producto,verSeleccion,'medidor')" tabindex="0" (keyup.enter)="handleEnterKey($event)">{{producto.cantidadDisponible > 0 ? "Agregar al carrito" : "Sin stock"}}</button>
                     <div class="d-flex justify-content-evenly" *ngIf="isAdmin() == true">
-                        <button [routerLink]="['/productos/', producto.id]" class="bi bi-pencil-fill saveBtn"></button>
-                        <button (click)="removeProducto(producto.id)" class="bi bi-trash-fill cancelBtn"></button>
+                        <button [routerLink]="['/productos/', producto.id]" class="bi bi-pencil-fill saveBtn" tabindex="0" (keyup.enter)="handleEnterKey($event)"></button>
+                        <button (click)="removeProducto(producto.id)" class="bi bi-trash-fill cancelBtn" tabindex="0" (keyup.enter)="handleEnterKey($event)"></button>
                     </div>
                 </div>
             </div>
@@ -26,65 +26,65 @@
                 <img class="producto-imagen" (click)="openAddProducto()" src="../../../assets/img/add.svg" alt="Descripción de la imagen del producto">
             </div>
         </div>
-    </div>      
-    <form [formGroup]="insertProducto" class="d-none formulario-nueva-alerta py-3 mx-auto" id="addProducto">
+    </div>
+    <form [formGroup]="insertProducto" class="d-none formulario-nueva-alerta py-3 mx-auto" id="addProducto" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <p class="title-formulario-alerta">nuevo producto</p>
         <p class="text-danger">{{loginError}}</p>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="Ingresa el nombre del producto" formControlName="nombre" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <input type="text" class="input" placeholder="Ingresa el nombre del producto" formControlName="nombre" id="input-cantidadwh-new" name="input-cantidadwh-new" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="" class="label"> Nombre del producto </label>
-      </div>  
+      </div>
       <div *ngIf="insertProducto.get('nombre')?.touched && insertProducto.get('nombre')?.errors?.['required']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un nombre
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un nombre
     </div>
       <div *ngIf="insertProducto.get('nombre')?.touched && insertProducto.get('nombre')?.errors?.['maxlength']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un nombre de menos de 40 carácteres
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un nombre de menos de 40 carácteres
     </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="Ingresa una descripción del producto" formControlName="descripcion" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <input type="text" class="input" placeholder="Ingresa una descripción del producto" formControlName="descripcion" id="input-cantidadwh-new" name="input-cantidadwh-new" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="" class="label"> Descripción del producto </label>
-      </div>  
+      </div>
       <div *ngIf="insertProducto.get('descripcion')?.touched && insertProducto.get('descripcion')?.errors?.['required']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un descripción del producto
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un descripción del producto
     </div>
     <div *ngIf="insertProducto.get('descripcion')?.touched && insertProducto.get('descripcion')?.errors?.['maxlength']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un descripción que no supere los 300 caracteres
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un descripción que no supere los 300 caracteres
     </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="Ingresa la ruta de la imagen del producto" formControlName="rutaImagen" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <input type="text" class="input" placeholder="Ingresa la ruta de la imagen del producto" formControlName="rutaImagen" id="input-cantidadwh-new" name="input-cantidadwh-new" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="" class="label"> Ruta imagen </label>
-      </div>  
+      </div>
       <div *ngIf="insertProducto.get('rutaImagen')?.touched && insertProducto.get('rutaImagen')?.errors?.['required']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese una ruta para la imagen del producto
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese una ruta para la imagen del producto
     </div>
     <div class="inputContainer">
-        <input type="text" class="input" placeholder="Ingresa el precio del producto" formControlName="precio" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <input type="text" class="input" placeholder="Ingresa el precio del producto" formControlName="precio" id="input-cantidadwh-new" name="input-cantidadwh-new" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="" class="label"> Precio unitario </label>
-      </div> 
+      </div>
       <div *ngIf="insertProducto.get('precio')?.touched && insertProducto.get('precio')?.errors?.['required']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese el precio unitario
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese el precio unitario
     </div>
     <div *ngIf="insertProducto.get('precio')?.errors?.['pattern']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un valor numerico
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un valor numerico
     </div>
       <div class="inputContainer">
-        <input type="text" class="input" pattern="[0-9]+" placeholder="Ingresa la cantidad disponible del producto" formControlName="cantidadDisponible" id="input-cantidadwh-new" name="input-cantidadwh-new">
+        <input type="text" class="input" pattern="[0-9]+" placeholder="Ingresa la cantidad disponible del producto" formControlName="cantidadDisponible" id="input-cantidadwh-new" name="input-cantidadwh-new" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="" class="label"> Cantidad disponible </label>
-      </div> 
+      </div>
       <div *ngIf="insertProducto.get('cantidadDisponible')?.touched && insertProducto.get('cantidadDisponible')?.errors?.['required']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese la cantidad disponible
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese la cantidad disponible
     </div>
     <div *ngIf="insertProducto.get('cantidadDisponible')?.errors?.['pattern']" class="error">
-        <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese un valor numerico
+        <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un valor numerico
     </div>
     <div class="inputContainer">
-        <select class="tipo-alerta" name="medidor" id="medidor" formControlName="categoria">
+        <select class="tipo-alerta" name="medidor" id="medidor" formControlName="categoria" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <option class="label" *ngFor="let categoria of categorias" [value]="categoria.id" >{{ categoria.nombre }}</option>
         </select>
       </div>
       <div class="btnContainer">
-        <button type="submit" class= "submitBtn saveBtn" (click)="addProducto()" id="btn-save-nueva-alerta">Guardar</button>
-        <button type="button" class= "submitBtn cancelBtn" (click)="closeAddProducto()" id="btn-close-nueva-alerta">Cancelar</button>
+        <button type="submit" class= "submitBtn saveBtn" (click)="addProducto()" id="btn-save-nueva-alerta" tabindex="0" (keyup.enter)="handleEnterKey($event)">Guardar</button>
+        <button type="button" class= "submitBtn cancelBtn" (click)="closeAddProducto()" id="btn-close-nueva-alerta" tabindex="0" (keyup.enter)="handleEnterKey($event)">Cancelar</button>
       </div>
     </form>
 

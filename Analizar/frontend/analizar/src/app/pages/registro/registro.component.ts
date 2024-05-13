@@ -60,9 +60,9 @@ export class RegistroComponent implements OnInit {
       this.registroForm.markAllAsTouched();
       this.loginError = 'Complete correctamente los campos'
       console.log('Opps algo fallo');
-      
+
     }
-    
+
   }
 
   passwordMatch(): boolean{
@@ -70,6 +70,16 @@ export class RegistroComponent implements OnInit {
       return true
     }else{
       return false
+    }
+  }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
     }
   }
 }

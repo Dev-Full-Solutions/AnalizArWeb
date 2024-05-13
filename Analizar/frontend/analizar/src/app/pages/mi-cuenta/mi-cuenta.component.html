@@ -1,50 +1,50 @@
 <section>
     <div class="Micuenta">
       <div class="wrapper">
-      <form action="" class="form" onsubmit="return validarCampos()">
-  
+      <form action="" class="form" onsubmit="return validarCampos()" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+
         <p class="title"> Mi cuenta </p>
-  
+
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" value="Milagros" id="nombre">
+          <input type="text" class="input" placeholder="a" value="Milagros" id="nombre" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <label for = "nombre" class = "label" > Nombre </label>
         </div>
-  
+
         <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" value="Wolowiez" id="apellido">
+        <input type="text" class="input" placeholder="a" value="Wolowiez" id="apellido" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         <label for="apellido" class="label" >Apellido </label>
       </div>
-  
+
       <div class="inputContainer">
-      <input type="text" class="input" placeholder="a" value="3512130840" id="telefonoMovil">
+      <input type="text" class="input" placeholder="a" value="3512130840" id="telefonoMovil" tabindex="0" (keyup.enter)="handleEnterKey($event)">
       <label for="telefonoMovil" class="label">Teléfono Móvil</label>
     </div>
-  
+
     <div class="inputContainer">
-    <input type="text" class="input" placeholder="a" value="Nicolas Accame 7179" id="direccion">
+    <input type="text" class="input" placeholder="a" value="Nicolas Accame 7179" id="direccion" tabindex="0" (keyup.enter)="handleEnterKey($event)">
     <label for="direccion" class="label">Dirección</label>
   </div>
-  
-  
+
+
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" value="miliwol15@gmail.com" id="email">
+          <input type="text" class="input" placeholder="a" value="miliwol15@gmail.com" id="email" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <label for="Email" class="label">Email</label>
         </div>
-  
+
         <div class="inputContainer">
-          <input type="password" class="input" placeholder="a" value= "milagros18" id="contraseñaActual">
+          <input type="password" class="input" placeholder="a" value= "milagros18" id="contraseñaActual" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <label for="contraseñaActual" class = "label" > Contraseña actual </label>
         </div>
-  
+
         <div class="inputContainer">
-          <input type="password" class="input" placeholder="a" value="Milagros1812" id="contraseñaNueva">
+          <input type="password" class="input" placeholder="a" value="Milagros1812" id="contraseñaNueva" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <label for="contraseñaNueva" class="label">Contraseña nueva </label>
         </div>
         <div class="d-flex justify-content-around">
-          <input type="submit" class= "submitBtn" value="Guardar" >
-          <input type="button" class="submitBtn2" value="Cancelar" onclick="volverHome()">
+          <input type="submit" class= "submitBtn" value="Guardar" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+          <input type="button" class="submitBtn2" value="Cancelar" onclick="volverHome()" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         </div>
       </form>
       </div>
-    </div> 
+    </div>
    </section>
