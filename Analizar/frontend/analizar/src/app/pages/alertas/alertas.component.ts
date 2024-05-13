@@ -23,16 +23,16 @@ constructor(private router: Router, private alertaService: AlertasService, priva
  medidores: any[] = [];
  alertasForm!: FormGroup;
  loginError: string = '';
- 
+
  ngOnInit(): void{
   this.alertasForm = this.initForm()
   this.getAlerts()
   this.getMedidoresByUser()
-  
+
  }
  getAlerts(){
   this.alertaService.getAlertas().subscribe((data: any) => {
-    this.alertas = data   
+    this.alertas = data
   })
  }
  //Traer medidores para poder seleccionar para que medidor hacer la alerta
@@ -40,14 +40,14 @@ constructor(private router: Router, private alertaService: AlertasService, priva
   this.medidorService.getMedidores().subscribe((data: any) => {
     this.medidores = data
     //console.log(data);
-    
+
   })
  }
    //Validaciones para los campos
  saveAlert(){
-  const valor = this.alertasForm.value.valor; 
+  const valor = this.alertasForm.value.valor;
   const medidor = this.alertasForm.value.medidor;
-  const fechaAlta = this.alertasForm.get('fechaAlta')?.value; 
+  const fechaAlta = this.alertasForm.get('fechaAlta')?.value;
   if(this.alertasForm.valid){
   this.alertaService.addAlertas(valor, medidor, fechaAlta).subscribe((alert: any) => {
     //console.log('Alerta agregada con éxito:', alert);
@@ -67,7 +67,7 @@ constructor(private router: Router, private alertaService: AlertasService, priva
     alert.setAlert = this.setAlert;
     alert.typeAlert = this.typeAlert;
     console.log(this.setAlert);
-    console.log(this.typeAlert);  
+    console.log(this.typeAlert);
     this.alerts.push(alert);
     this.setAlert = 0;
     this.typeAlert = '';
@@ -82,7 +82,7 @@ constructor(private router: Router, private alertaService: AlertasService, priva
   //this.alertaService.updateAlertas(id)
  }
 
- removeAlert(id:number){  
+ removeAlert(id:number){
   this.alertaService.removeAlertas(id).subscribe((alert) => {
     //console.log('Alerta eliminada con éxito:', alert);
     this.closeModal();
@@ -98,8 +98,8 @@ constructor(private router: Router, private alertaService: AlertasService, priva
     const modal = document.getElementById('addAlert');
     let contenedorAlertas = document.getElementById('contenedor-alertas');
     if(modal != null) {
-      modal.style.display ='flex'; 
-      this.alertasForm.reset();     
+      modal.style.display ='flex';
+      this.alertasForm.reset();
     }
     if(contenedorAlertas != null) {
       contenedorAlertas.style.display ='none';
@@ -110,7 +110,7 @@ constructor(private router: Router, private alertaService: AlertasService, priva
     const editModal = document.getElementById('editAlert');
     let contenedorAlertas = document.getElementById('contenedor-alertas');
     if(editModal != null) {
-      editModal.style.display ='flex';      
+      editModal.style.display ='flex';
     }
     if(contenedorAlertas != null) {
       contenedorAlertas.style.display ='none';
@@ -133,6 +133,16 @@ constructor(private router: Router, private alertaService: AlertasService, priva
       medidor: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       fechaAlta: [''],
     })
+  }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
   }
 
 }

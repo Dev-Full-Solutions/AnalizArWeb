@@ -97,7 +97,7 @@ export class CarritoComponent implements OnInit {
             }
             this.total = this.calcularValorTotal()
           })
-          
+
         }
       }
     }
@@ -116,7 +116,7 @@ export class CarritoComponent implements OnInit {
               this.modificarItemCarrito(Number(id),'disminuir',1)
               this.total = this.calcularValorTotal()
             })
-            
+
           }
         }
       }
@@ -159,7 +159,7 @@ export class CarritoComponent implements OnInit {
           this.modificarItemCarrito(Number(id),'eliminar',0)
           this.total = this.calcularValorTotal()
         }
-       
+
       }
     }
   }
@@ -170,18 +170,18 @@ export class CarritoComponent implements OnInit {
 
   modificarItemCarrito(id:number, tipoModificacion:string, cantidad:number){
     let carrito = this.obtenerCarritoLocalStorage()
-    
+
     for(let item of carrito){
       if(item.producto.id === id){
-        
+
         if(tipoModificacion === 'aumentar'){
           item.cantidad += cantidad
         }
-        
+
         if(tipoModificacion === 'disminuir'){
           item.cantidad -= cantidad
         }
-        
+
         if(tipoModificacion === 'eliminar'){
           let index = carrito.findIndex((el:any)=> el.producto.id === id)
           carrito.splice(index,1)
@@ -201,7 +201,7 @@ export class CarritoComponent implements OnInit {
       for(let item of carrito){
         this.producto = item.tipoProducto
       }
-      
+
       this.ProductosService.generateCheckout(productPrice, this.producto)
         .subscribe(
           (response) => {
@@ -216,5 +216,15 @@ export class CarritoComponent implements OnInit {
             console.error('Error al generar el enlace de pago:', error);
           }
         );
+    }
+
+    handleEnterKey(event: Event): void {
+      if (event instanceof KeyboardEvent && event.key === 'Enter') {
+        const targetElement = event.target as HTMLElement;
+        if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+          const linkText = targetElement.textContent?.trim();
+          console.log(`Se presionó Enter en el enlace: ${linkText}`);
+        }
+      }
     }
 }
