@@ -3,9 +3,19 @@
         <p class="text-danger">{{loginError}}</p>
         <p class="title-formulario-alerta">Operar sistema de Iluminacion</p>
         <div class="inputContainer">
-          <input type="hidden" name="idAlerta" id="input-idAlerta-edit">
-          <input type="number" formControlName="intensidad" class="input" placeholder="Modificar la intensidad de la iluminacion" id="input-cantidadwh-edit">
-          <label for="" class="label"> Intensidad </label>
+          <label for="intensidad" class="label-intensidad">Intensidad:</label>
+          <input
+            type="range"
+            class="input"
+            formControlName="intensidad"
+            id="intensidad"
+            name="intensidad"
+            min="0"
+            max="100"
+          />
+          <span *ngIf="editForm && editForm.get('intensidad')">{{
+            editForm.get("intensidad")?.value
+          }}</span>
         </div>
         <div class="inputContainer">
             <input type="checkbox" formControlName="encendido" class="input" placeholder="Encender o apagar" id="input-cantidadwh-edit">

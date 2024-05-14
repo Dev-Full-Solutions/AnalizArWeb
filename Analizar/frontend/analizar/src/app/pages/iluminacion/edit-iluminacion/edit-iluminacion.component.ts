@@ -31,8 +31,8 @@ export class EditIluminacionComponent implements OnInit {
 
   initForm(): FormGroup {
     return this.fb.group({
-      intensidad: ['', [Validators.required, Validators.pattern('^([1-9][0-9]?|100)$')]],
-      encendido: ['', [Validators.required]],
+      intensidad: ['100', [Validators.required]],
+      encendido: [true, [Validators.required]],
     })
   }
   //Traer medidores para poder seleccionar para que medidor hacer la alerta
@@ -59,8 +59,8 @@ export class EditIluminacionComponent implements OnInit {
   }
   updateIluminacion(){
 
-    const intensidad = this.editForm.value.intensidad;
-    const encendido = this.editForm.value.encendido;
+    const intensidad = parseInt(this.editForm.get('intensidad')?.value || '100');
+    const encendido = this.editForm.get('encendido')?.value; 
     if(this.editForm.valid){
 
     this.iluminacionService.updateIluminacion(this.iluminacionId, intensidad, encendido).subscribe((iluminacion) => {
