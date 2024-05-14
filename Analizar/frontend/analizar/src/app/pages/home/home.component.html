@@ -6,21 +6,21 @@
     <h3><strong class="titulos-h3">AnalizAr te brinda la capacidad de comprender tu consumo de energía eléctrica, permitiéndote estimar tus gastos mensuales, realizar comparaciones con meses anteriores ¡y mucho más! Descubrí tu consumo de luz de manera intuitiva y tomá el control de tus gastos energéticos.</strong></h3>
     </div>
     <div class="contenedor-superior-item2">
-    <img src="../assets/img/fondo1b.png" alt="imagen de la aplicacion en movil" title="Personas usando Analizar" id="imagen-principal" (mouseover)="cambiarImagen()" (mouseout)="restaurarImagen()"/>
+    <img src="../assets/img/fondo1b.png" alt="representación visual de la aplicación en un dispositivo móvil" title="Personas usando Analizar" id="imagen-principal" (mouseover)="cambiarImagen()" (mouseout)="restaurarImagen()"/>
     </div>
 </div>
-<section class="sectionMain" id="servicios">
+<section class="sectionMain" id="servicios" role="region" aria-labelledby="titulo-servicios">
     <!-- Sección superior de la página -->
       <!-- Segundo bloque -->
-      <h2 class="titulos-h2"><strong>SERVICIOS</strong></h2>
-
+      <h2 class="titulos-h2" id="titulo-servicios"><strong>SERVICIOS</strong></h2>
+      
       <div class="contenedor-servicios">
         <div class="contenedor-imagen">
-          <img src="../assets/img/fondo2b.png" alt="imagen de usuario analizando informes de la app" title="Informes AnalizAr" id="imagen-servicios" (mouseover)="cambiarImagenServicios()" (mouseout)="restaurarImagenServicios()"/>
+          <img src="../assets/img/fondo2b.png" alt="usuario revisando informes en la aplicación analizar" title="Informes AnalizAr" id="imagen-servicios" (mouseover)="cambiarImagenServicios()" (mouseout)="restaurarImagenServicios()"/>
         </div>
         <div class="contenedor-tabla">
           <div class="contenedor-item1">
-            <h3 class="titulos-h3">Nuestra aplicación te permitirá tener al alcance de tu mano de forma simple toda la información que necesitas saber sobre el consumo eléctrico para tomar decisiones de manera informada y eficiente, ¡desde cualquier dispositivo!</h3>
+            <h3 class="titulos-h3">Gestioná tu consumo eléctrico de manera eficiente con nuestra aplicación. Accedé fácilmente a toda la información que necesites, ¡desde cualquier dispositivo!</h3>
           </div>
           <div class="contenedor-item contenedor-item2">
             <p style="text-align: center;">Nivel de Consumo Diario</p>
@@ -44,20 +44,23 @@
       <!-- Tercer bloque -->
       <div class="contenedor-comentarios">
         <div class="contenedor-tarjetas">
+        <!-- Primer testimonio -->
           <div class="contenedor-textos">
             <h3 style="text-align: center"><strong>&#64;juli23</strong></h3>
             <p style="text-align: center">"Gracias a la app pude reducir el costo de mis facturas mensuales y contribuir al cuidado del medio ambiente. Una inversión inteligente para mi bolsillo y el planeta."</p>
           </div>
         </div>
-
+       <!-- Segundo testimonio -->
         <div class="contenedor-tarjetas">
+       <!-- Contenido del segundo testimonio -->
           <div class="contenedor-textos">
             <h3 style="text-align: center"><strong>&#64;carlosAG</strong></h3>
             <p style="text-align: center">"Desde que empecé a usar AnalizAr, tomé conciencia del consumo de luz en mi hogar. Me permitió identificar áreas de mejora y ajustar mis hábitos para un uso más eficiente de la energía"</p>
           </div>
         </div>
-
+       <!-- Tercer testimonio -->
         <div class="contenedor-tarjetas">
+       <!-- Contenido del tercer testimonio -->
           <div class="contenedor-textos">
             <h3 style="text-align: center">&#64;gaby9</h3>
             <p style="text-align: center">"Las alertas de AnalizAr son un gran recurso. Me ayudan a supervisar mi consumo de luz de forma efectiva, brindándome un recordatorio amigable para ahorrar energía y dinero."</p>
@@ -65,7 +68,7 @@
         </div>
       </div>
 </section>
-<section class="seccion__faq">
+<section class="seccion__faq" aria-labelledby="titulo-faq">
     <h2 class="titulos-h2" id="faq"><strong>FAQ</strong></h2>
     <details>
       <summary>1. ¿La aplicación tiene algún costo?</summary>
@@ -121,7 +124,7 @@
           <i class="formulario__validacion-estado fas fa-times-circle" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
         </div>
         <div *ngIf="formContact.get('nombreApellido')?.touched && formContact.get('nombreApellido')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Disculpe, debe ingresar nombre y apellido.</p>
+            <p class="formulario__input-error">Tenés que ingresar nombre y apellido.</p>
         </div>
       </div>
 
@@ -133,36 +136,36 @@
           <i class="formulario__validacion-estado fas fa-times-circle" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
         </div>
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Ingrese una dirección de mail</p>
-        </div>
+
+            <p class="formulario__input-error">Ingresá una dirección de mail</p>
+        </div> 
         <div *ngIf="formContact.get('email')?.touched && formContact.get('email')?.errors?.['pattern']" class="error email-error">
-            <p class="formulario__input-error">Recuerde, el correo puede contener letras, números, punto, debe tener el símbolo &#64; y el proveedor del servicio.</p>
+            <p class="formulario__input-error">Recordá, el correo puede contener letras, números, punto, debe tener el símbolo &#64; y el proveedor del servicio.</p>
         </div>
-      </div>
 
       <!-- Grupo: Mensaje -->
       <div class="formulario__grupo" id="grupo__mensaje">
         <label class="formulario__label">Mensaje</label>
         <div class="formulario__grupo-input">
-          <input type="text" class="formulario__input" name="mensaje" id="mensaje" formControlName="mensaje" placeholder="Exprese aquí el motivo de su contacto, si requiere de algún servicio específico o cualquier información que considere relevante. Gracias." tabindex="0" (keyup.enter)="handleEnterKey($event)">
-          <i class="formulario__validacion-estado fas fa-times-circle" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
+          <input type="text" class="formulario__input" name="mensaje" id="mensaje" formControlName="mensaje" placeholder="Por favor, contanos el motivo de tu contacto para brindarte la mejor asistencia posible.">
+          <i class="formulario__validacion-estado fas fa-times-circle"></i>              
         </div>
         <div *ngIf="formContact.get('mensaje')?.touched && formContact.get('mensaje')?.errors?.['required']" class="error email-error">
-            <p class="formulario__input-error">Por favor, déjenos un mensaje con el motivo de su solicitud de contacto.</p>
+            <p class="formulario__input-error">Por favor, dejanos un mensaje con el motivo de tu solicitud de contacto.</p>
         </div>
       </div>
 
       <!-- Grupo: Términos y Condiciones -->
       <div class="formulario__grupo formulario__grupo-terminos" id="grupo__terminos">
         <label class="formulario__label">
-          <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos" tabindex="0" (keyup.enter)="handleEnterKey($event)">
-          <b class="formulario__span">Acepto los terminos y condiciones</b>
+          <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+          <b class="formulario__span">Acepto los términos y condiciones</b>
         </label>
       </div>
 
       <!-- Mensaje de campos requeridos -->
       <div class="formulario__mensaje" id="formulario__mensaje">
-      <p><i class="fas fa-exclamation-circle"><b>Error:</b> Por favor, complete correctamente los campos del formulario.</i></p>
+      <p><i class="fas fa-exclamation-circle"><b>Error:</b> Por favor, completá correctamente los campos del formulario.</i></p>
       </div>
 
       <!-- Grupo: Enviar -->

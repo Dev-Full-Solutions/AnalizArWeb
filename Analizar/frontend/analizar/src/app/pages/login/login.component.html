@@ -7,17 +7,14 @@
             <p class="text-danger">{{loginError}}</p>
             <div class="field email-field">
                 <div class="input-field">
-                  <label for="email">
-                     <span class="required">*</span>
-                  </label>
-                  <input type="email" placeholder="Ingresa tu email" class="email" formControlName="email" required tabindex="0" (keyup.enter)="handleEnterKey($event)">
+                  <input type="email" placeholder="Ingresá tu email" class="email" formControlName="email" required>
                 </div>
                 <div *ngIf="loginDash.get('email')?.touched && loginDash.get('email')?.errors?.['required']" class="error email-error">
-                    <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un e-mail
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail
                 </div>
                 <div *ngIf="loginDash.get('email')?.touched && loginDash.get('email')?.errors?.['pattern']" class="error email-error">
-                    <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un e-mail válido
-                </div>
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail válido
+                </div>            
               </div>
 
               <div class="field confirm-password">
@@ -27,26 +24,26 @@
                  </label>
                   <input #password
                   [type]="show ? 'text' : 'password'"
-                    placeholder="Ingresa tu contraseña"
+                    placeholder="Ingresá tu contraseña"
                     class="cPassword"
                     formControlName="password" tabindex="0" (keyup.enter)="handleEnterKey($event)"/>
                   <i [ngClass]="(password.type == 'password')? 'bx-hide':'bx-show'" class="bx show-hide" (click)="showPass()" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
                 </div>
                 <div *ngIf="loginDash.get('password')?.touched && loginDash.get('password')?.errors?.['required']" class="error cPassword-error">
-                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor ingrese una contraseña
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña
                 </div>
                 <div *ngIf="loginDash.get('password')?.touched && loginDash.get('password')?.errors?.['minlength']" class="error cPassword-error">
-                    <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un contraseña de más de 8 caracteres
+                    <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá una contraseña de más de 8 caracteres
                 </div>
               </div>
 
             <div class="checkbox-text">
                 <div class="checkbox-content">
-                    <input type="checkbox" id="logCheck" tabindex="0" (keyup.enter)="handleEnterKey($event)">
-                    <label for="logCheck" class="text">Recuérdame</label>
+                    <input type="checkbox" id="logCheck">
+                    <label for="logCheck" class="text">Recordarme</label>
                 </div>
 
-                <a (click)="resetPass()" class="text signup-link" tabindex="0" (keyup.enter)="handleEnterKey($event)">Olvidaste tu contraseña?</a>
+                <a (click)="resetPass()" class="text signup-link">¿Olvidaste tu contraseña?</a>
             </div>
 
             <div class="input-field button">
@@ -55,33 +52,30 @@
         </form>
 
             <div class="login-signup">
-                <span class="text">No estás registrado?
-                    <a href="/registro" class="text signup-link" tabindex="0" (keyup.enter)="handleEnterKey($event)">Regístrate ahora</a>
-                </span>
-                <a href="/" class="text signup-link" tabindex="0" (keyup.enter)="handleEnterKey($event)">Volver al Inicio</a>
-            </div>
+                <span class="text">¿No estás registrado?
+                    <a href="/registro" class="text signup-link">Registrate ahora</a>
+                </span> 
+                <a href="/" class="text signup-link">Volver al Inicio</a> 
+            </div> 
 
         </div>
 
        <!-- Formulario de "olvidó su contraseña"-->
         <div class="form signup" id="formReset">
-            <span class="title">Reestablece tu contraseña</span>
+            <span class="title">Reestablecé tu contraseña</span>
 
         <form [formGroup]="resetFormPass" (ngSubmit)="onResetPass()" tabindex="0" (keyup.enter)="handleEnterKey($event)">
             <div class="input-field">
-              <label for="email">
-                <span class="required">*</span>
-             </label>
-                <input type="email" placeholder="Ingresa tu email" formControlName="email" tabindex="0" (keyup.enter)="handleEnterKey($event)">
-                <i class="uil uil-envelope icon" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>
+                <input type="email" placeholder="Ingresá tu email" formControlName="email">
+                <i class="uil uil-envelope icon"></i>
             </div>
             <div *ngIf="resetFormPass.get('email')?.touched && resetFormPass.get('email')?.errors?.['required']" class="error email-error">
-                <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un e-mail
+                <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail
             </div>
             <div *ngIf="resetFormPass.get('email')?.touched && resetFormPass.get('email')?.errors?.['pattern']" class="error email-error">
-                <i class="bi bi-exclamation-circle mx-2" tabindex="0" (keyup.enter)="handleEnterKey($event)"></i>Por favor ingrese un e-mail válido
-            </div>
-
+                <i class="bi bi-exclamation-circle mx-2"></i>Por favor, ingresá un e-mail válido
+            </div>  
+            
             <div class="checkbox-text">
                 <div class="checkbox-content">
                     <input type="checkbox" id="sigCheck" tabindex="0" (keyup.enter)="handleEnterKey($event)">
@@ -95,8 +89,8 @@
         </form>
 
             <div class="login-signup">
-                <span class="text">Estás registrado?
-                    <a (click)="formLogin()" class="text login-link" tabindex="0" (keyup.enter)="handleEnterKey($event)">Login</a>
+                <span class="text">¿Estás registrado?
+                    <a (click)="formLogin()" class="text login-link">Login</a>
                 </span>
             </div>
         </div>
