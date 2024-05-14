@@ -21,10 +21,10 @@ export class PlanesComponent implements OnInit {
       //console.log(servicios);
       this.servicios = servicios;
     }, (error: any) => {
-      console.error('Hubo un error al obtener los servicios', error);      
+      console.error('Hubo un error al obtener los servicios', error);
     })
   }
-  isAdmin(): boolean {  
+  isAdmin(): boolean {
     return this.authService.getIsAdmin();
   }
   removeProducto(id: number){
@@ -32,7 +32,7 @@ export class PlanesComponent implements OnInit {
       console.log('Producto eliminado con exito:', product);
       this.getServicios()
     }, (error: any) => {
-      console.error('Hubo un error al eliminar el producto', error);      
+      console.error('Hubo un error al eliminar el producto', error);
     })
   }
 
@@ -52,17 +52,28 @@ export class PlanesComponent implements OnInit {
       if(!seAgregoElemento){
         carritoActual!.push({producto,"cantidad":1, tipoProducto})
       }
-      
+
       localStorage.setItem('mi-carrito',JSON.stringify(carritoActual))
     }else{
       let carritoActual = JSON.stringify([{producto,"cantidad":1, tipoProducto}])
       localStorage.setItem('mi-carrito',carritoActual)
     }
-    
+
     Swal.fire({
       icon: 'success',
       title: 'Éxito!',
       text: 'Se agregó el producto al carrito!'
     })
   }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
+  }
+
 }
