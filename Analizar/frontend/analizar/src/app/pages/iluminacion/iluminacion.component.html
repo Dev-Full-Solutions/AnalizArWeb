@@ -1,0 +1,124 @@
+<section
+  class="contenedor-principal-iluminacion my-4 mx-auto"
+  id="contenedor-principal-alertas"
+>
+  <section class="contenedor-alertas" id="contenedor-alertas">
+    <div class="tarjeta" *ngFor="let el of iluminacion; let i = index">
+      <div class="alerta" id="div-alerta1">
+        <h4>Nombre: {{ el.nombre }}</h4>
+        <h4>Intensidad: {{ el.intensidad }}</h4>
+        <h4>{{ el.encendido ? "Encendido" : "Apagado" }}</h4>
+        <p class="texto-alerta" id="texto-alerta-alerta1">
+          Detalle: {{ el.detalle }}
+        </p>
+      </div>
+
+      <div class="contenedor-botones-alerta">
+        <button
+          class="btn-alerta-editar"
+          [routerLink]="['/iluminacion/', el.idIluminacion]"
+        >
+          editar
+        </button>
+        <button
+          class="btn-alerta-eliminar"
+          (click)="removeIluminacion(el.idIluminacion)"
+        >
+          eliminar
+        </button>
+      </div>
+    </div>
+
+    <div class="alerta-nueva">
+      <button
+        class="btn-nueva-alerta"
+        id="btn-nueva-alerta"
+        (click)="openModal()"
+      >
+        +
+      </button>
+      <h2 class="subtitulo-alerta">Nuevo sistema de Iluminacion</h2>
+    </div>
+  </section>
+  <form
+    [formGroup]="iluminacionForm"
+    class="formulario-nueva-alerta"
+    id="addAlert"
+  >
+    <p class="title-formulario-alerta">Nuevo sistema de Iluminacion</p>
+    <p class="text-danger">{{ loginError }}</p>
+    <div class="inputContainer">
+      <input
+        type="text"
+        class="input"
+        placeholder="Ingrese un nombre para el sistema de iluminacion"
+        formControlName="nombre"
+        id="input-cantidadwh-new"
+        name="input-cantidadwh-new"
+      />
+      <label for="" class="label"> Nombre </label>
+    </div>
+    <div class="inputContainer">
+      <input
+        type="text"
+        class="input"
+        placeholder="Ingrese un detalle del sistema de iluminacion"
+        formControlName="detalle"
+        id="input-cantidadwh-new"
+        name="input-cantidadwh-new"
+      />
+      <label for="" class="label"> Detalle </label>
+    </div>
+    <div class="inputContainer">
+      <input
+        type="text"
+        class="input"
+        placeholder="Ingrese un Identificador para el sistema de iluminacion"
+        formControlName="identificador"
+        id="input-cantidadwh-new"
+        name="input-cantidadwh-new"
+      />
+      <label for="" class="label"> Identificador </label>
+    </div>
+    <div class="inputContainer">
+      <label for="intensidad" class="label-intensidad">Intensidad:</label>
+      <input
+        type="range"
+        class="input"
+        formControlName="intensidad"
+        id="intensidad"
+        name="intensidad"
+        min="0"
+        max="100"
+      />
+      <span *ngIf="iluminacionForm && iluminacionForm.get('intensidad')">{{
+        iluminacionForm.get("intensidad")?.value
+      }}</span>
+    </div>
+
+    <div class="inputContainer">
+      <input type="checkbox" formControlName="encendido" class="input" placeholder="Encender o apagar" id="input-cantidadwh-edit">
+      <label for="" class="label"> Encendido </label>
+    </div>
+    
+
+    <div class="btnContainer">
+      <button
+        type="submit"
+        class="submitBtn saveBtn"
+        (click)="saveIluminacion()"
+        id="btn-save-nueva-alerta"
+      >
+        Guardar
+      </button>
+      <button
+        type="button"
+        class="submitBtn cancelBtn"
+        (click)="closeModal()"
+        id="btn-close-nueva-alerta"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

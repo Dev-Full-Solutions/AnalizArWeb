@@ -8,26 +8,46 @@ section.contenedor-principal-alertas {
 
 section.contenedor-alertas {
     width: 100%;
-    display: grid;
-    padding: 0 5rem;
-    grid-template-columns: repeat(3, max-content);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 5rem;
+    padding: 0 5rem;
+}
+
+div.alerta-nueva {
+    background-color: var(--white);
+    height: 100px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: .5rem .8rem 1rem .1rem #1113;
+    margin-bottom: 20px;
+}
+
+
+div.tarjeta {
+    background-color: var(--white);
+    height: 250px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .4rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: .5rem .8rem 1rem .1rem #1113;
+    margin-bottom: 20px;
 }
 
 div.alerta {
-   background-color: var(--white);
-   height: 250px;
-   width: 275px;
-   display: flex;
-   flex-flow: column nowrap;
-   justify-content: center;
-   align-items: center;
-   gap: .4rem;
-   padding: 1rem 2rem;
-   border-radius: 10px;
-   box-shadow: .5rem .8rem 1rem .1rem #1113;
+    flex-direction: column;
+    width: 40%;
 }
+
 
 button.btn-nueva-alerta {
     border: 2px solid var(--green-700);
@@ -41,6 +61,52 @@ button.btn-nueva-alerta {
 button.btn-nueva-alerta:hover {
     background-color: var(--white);
     color: var(--green-700);
+}
+
+.contenedor-botones-alerta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+
+.btn-alerta-editar {
+    background-color: var(--green-700);
+    border: 2px solid var(--green-700);
+    color: var(--white);
+    margin: 2%;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    width: 25%;
+    
+}
+
+.btn-alerta-eliminar {
+    background-color: var(--red);
+    border: 2px solid var(--red);
+    color: var(--white);  
+    margin: 2%;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    width: 25%;
+}
+
+
+button.submitBtn {
+    width: max-content; 
+    text-align: center;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    color: var(--white);
+    margin: 0 .2rem;
+    font-size: .85rem;
 }
 
 h2.subtitulo-alerta {
@@ -159,7 +225,7 @@ select.tipo-alerta:focus {
 }
 
 label.label {
-    position: absolute;
+
     top: 15px;
     left: 15px;
     padding: 0 4px;
@@ -169,6 +235,11 @@ label.label {
     transition: 0.5s;
     z-index: 0;
 }
+
+.label-intensidad{
+    margin: 5px;
+}
+
 
 ::placeholder {
     color: transparent;
@@ -206,14 +277,14 @@ div.btnContainer {
 .ng-invalid:not(form).ng-touched {
     border-left: 5px solid var(--red);
 }
+
+
+
 /* ---------- @Medias queries ---------- */
 
 @media screen and (max-width: 1024px){
 
-    section.contenedor-alertas {
-        grid-template-columns: repeat(2, minmax(30%, 400px));
-        gap: 3rem;
-    }
+
 
     div.contenedor-botones-alerta
      {
@@ -241,10 +312,7 @@ div.btnContainer {
 
 @media screen and (max-width: 720px){
 
-    section.contenedor-alertas {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
+
 
     
     form.formulario-nueva-alerta {
