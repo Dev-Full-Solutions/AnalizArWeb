@@ -13,13 +13,13 @@ export class ProductosComponent implements OnInit {
   productos: any[]=[];
   categorias: any[] = [];
   counter = Array;
-  opcionSeleccionado: string = '1';
+  opcionSeleccionado: number[] = [];
   verSeleccion: number = 1;
   insertProducto!: FormGroup;
   loginError: string = '';
 
   constructor(private productosService: ProductosService, private authService: AuthService, private fb: FormBuilder) {
-       
+
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class ProductosComponent implements OnInit {
   }
 
   isAdmin(): boolean {
-    // console.log(this.authService.isLoggedIn);   
+    // console.log(this.authService.isLoggedIn);
     return this.authService.getIsAdmin();
   }
 
@@ -52,15 +52,15 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
-  capturar() {
+  capturar(indice:number) {
     // Pasamos el valor seleccionado a la variable verSeleccion
-    this.verSeleccion = Number(this.opcionSeleccionado);
+    this.verSeleccion = Number(this.opcionSeleccionado[indice]);
   }
   //Agregar producto
   addProducto(){
-  const nombre = this.insertProducto.value.nombre; 
+  const nombre = this.insertProducto.value.nombre;
   const descripcion = this.insertProducto.value.descripcion;
-  const rutaImagen = this.insertProducto.value.rutaImagen; 
+  const rutaImagen = this.insertProducto.value.rutaImagen;
   const cantidadDisponible = this.insertProducto.value.cantidadDisponible;
   const precio = this.insertProducto.value.precio;
   const categoria = this.insertProducto.value.categoria;
@@ -82,10 +82,10 @@ export class ProductosComponent implements OnInit {
     const modalProducto = document.getElementById('addProducto');
     let contenedorProductos = document.getElementById('productos');
     if(modalProducto != null) {
-      //console.log('click');      
+      //console.log('click');
       modalProducto.classList.remove('d-none');
-      modalProducto.classList.add('d-flex'); 
-      this.insertProducto.reset();     
+      modalProducto.classList.add('d-flex');
+      this.insertProducto.reset();
     }
     if(contenedorProductos != null) {
       contenedorProductos.classList.add('visually-hidden');
@@ -94,9 +94,9 @@ export class ProductosComponent implements OnInit {
   closeAddProducto() {
     const modalProducto = document.getElementById('addProducto');
     let contenedorProductos = document.getElementById('productos');
-    if(modalProducto != null) {     
-      modalProducto.classList.remove('d-flex'); 
-      modalProducto.classList.add('d-none');   
+    if(modalProducto != null) {
+      modalProducto.classList.remove('d-flex');
+      modalProducto.classList.add('d-none');
     }
     if(contenedorProductos != null) {
       contenedorProductos.classList.remove('visually-hidden');
@@ -119,10 +119,10 @@ export class ProductosComponent implements OnInit {
       console.log('Producto eliminado con exito:', product);
       this.getProductos()
     }, (error: any) => {
-      console.error('Hubo un error al eliminar el producto', error);      
+      console.error('Hubo un error al eliminar el producto', error);
     })
   }
-  
+
   agregarCarrito(producto:any, cantidad:number, tipoProducto:string){
 
     console.log(cantidad)
@@ -149,36 +149,36 @@ export class ProductosComponent implements OnInit {
       if(!seAgregoElemento){
         // let nuevaCantidadFinal = producto.cantidadDisponible - cantidad
         // const prod = {
-        //   "nombre": producto.nombre, 
-        //   "descripcion":producto.descripcion, 
-        //   "rutaImagen": producto.rutaImagen, 
-        //   "precio": producto.precio, 
+        //   "nombre": producto.nombre,
+        //   "descripcion":producto.descripcion,
+        //   "rutaImagen": producto.rutaImagen,
+        //   "precio": producto.precio,
         //   "cantidadDisponible": nuevaCantidadFinal
         // }
         // this.productosService.updateProductoById(producto.id, prod).subscribe((data:any) => {
-        //   console.log(data)  
+        //   console.log(data)
         //   return data
         // },(error:any) => {
         //   console.error(error)
         // })
         carritoActual!.push({producto,cantidad, tipoProducto})
       }
-      
+
       localStorage.setItem('mi-carrito',JSON.stringify(carritoActual))
     }else{
       let carritoActual = JSON.stringify([{producto,cantidad, tipoProducto}])
       // let nuevaCantidadFinal = producto.cantidadDisponible - cantidad
       // const prod = {
-      //   "nombre": producto.nombre, 
-      //   "descripcion":producto.descripcion, 
-      //   "rutaImagen": producto.rutaImagen, 
-      //   "precio": producto.precio, 
+      //   "nombre": producto.nombre,
+      //   "descripcion":producto.descripcion,
+      //   "rutaImagen": producto.rutaImagen,
+      //   "precio": producto.precio,
       //   "cantidadDisponible": nuevaCantidadFinal
       // }
       // this.productosService.updateProductoById(producto.id, prod).subscribe(data => console.log(data))
       localStorage.setItem('mi-carrito',carritoActual)
     }
-    
+
     Swal.fire({
       icon: 'success',
       title: 'Éxito!',
@@ -186,20 +186,31 @@ export class ProductosComponent implements OnInit {
     }).then(()=>{
       let nuevaCantidadFinal = producto.cantidadDisponible - cantidad
       const prod = {
-        "nombre": producto.nombre, 
-        "descripcion":producto.descripcion, 
-        "rutaImagen": producto.rutaImagen, 
-        "precio": producto.precio, 
+        "nombre": producto.nombre,
+        "descripcion":producto.descripcion,
+        "rutaImagen": producto.rutaImagen,
+        "precio": producto.precio,
         "cantidadDisponible": nuevaCantidadFinal
       }
       this.productosService.updateProductoById(producto.id, prod).subscribe((data:any) => {
-        //console.log(data) 
-        this.verSeleccion = 0 
+        //console.log(data)
+        this.verSeleccion = 0
         this.getProductos()
         return data
       },(error:any) => {
         console.error(error)
-      })      
+      })
     })
   }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
+  }
+
 }

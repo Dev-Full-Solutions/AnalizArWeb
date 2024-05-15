@@ -19,21 +19,21 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  
+
   ngOnInit(): void {
     this.loginDash = this.initForm();
-    this.resetFormPass = this.resetForm();  
+    this.resetFormPass = this.resetForm();
   }
   //Capturo los valores cuando le doy a ingresar
-  onSubmit(): void{    
+  onSubmit(): void{
         if(this.loginDash.valid){
-          //console.log(this.loginDash.value.email, this.loginDash.value.password);        
-      this.authService.login(this.loginDash.value.email, this.loginDash.value.password).subscribe(  
-        response => {          
-            // Autenticación exitosa   
-            console.log(response);         
+          //console.log(this.loginDash.value.email, this.loginDash.value.password);
+      this.authService.login(this.loginDash.value.email, this.loginDash.value.password).subscribe(
+        response => {
+            // Autenticación exitosa
+            console.log(response);
             this.authService.setIsAdmin(response.is_admin);
-            localStorage.setItem('userId', response?.userId)                    
+            localStorage.setItem('userId', response?.userId)
             localStorage.setItem('currentUser', JSON.stringify({ email: this.email }));
             if(response.is_admin == true) {
               this.router.navigate(['/dashboard-admin']);
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     }else{
       this.loginDash.markAllAsTouched();
       this.loginError = 'Complete los campos';
-    }    
+    }
   }
   //Validaciones para los campos
   initForm(): FormGroup {
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   }
   formLogin(): void{
     const container = document.querySelector('.container')!;
-    container.classList.remove('active');    
+    container.classList.remove('active');
   }
   resetForm(): FormGroup {
     return this.fb.group({
@@ -84,7 +84,18 @@ export class LoginComponent implements OnInit {
   }
   showPass(){
     this.show = !this.show;
-  }   
+  }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
+  }
+
 
 
 }

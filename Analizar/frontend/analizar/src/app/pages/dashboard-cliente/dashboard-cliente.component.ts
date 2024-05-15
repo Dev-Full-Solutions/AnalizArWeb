@@ -120,11 +120,11 @@ export class DashboardClienteComponent {
 
   datosARecorrer:any;
   precio:any = Number.parseFloat(localStorage.getItem('costo-luz')!) || 1
-  
+
   constructor( private dataConsumo: ConsumoService ){
 
   }
-  
+
   ngOnInit(){
 
     this.cargarDatos()
@@ -227,7 +227,7 @@ export class DashboardClienteComponent {
           delete datos.mensual[30]
           delete datos.mensual[29]
           delete datos.mensual[28]
-          
+
           if(!((this.fecha_actual[2] % 4 == 0 && this.fecha_actual[2] % 100 != 0) || this.fecha_actual[2] % 400 == 0)){
             delete datos.mensual[27]
           }
@@ -252,7 +252,7 @@ export class DashboardClienteComponent {
         let mes = dato["fechaMedicion"].getMonth()
         let anio = dato["fechaMedicion"].getFullYear()
         let diaSemana = this.getDiaDeLaSemana(dato["fechaMedicion"].getDay())
-        
+
         if(anio === this.fecha_actual[2]){
           datos.anual[mes].consumo += dato.consumo
 
@@ -271,14 +271,14 @@ export class DashboardClienteComponent {
                     datos.semanal[0].consumo += dato.consumo
 
                   }
-                  break 
+                  break
                 }
                 case "martes":{
                   if(dia >= this.fecha_actual[0] - 1){
                     let numeroDiaSemana = dato["fechaMedicion"].getDay()
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 case "miercoles":{
@@ -286,7 +286,7 @@ export class DashboardClienteComponent {
                     let numeroDiaSemana = dato["fechaMedicion"].getDay()
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 case "jueves":{
@@ -294,7 +294,7 @@ export class DashboardClienteComponent {
                     let numeroDiaSemana = dato["fechaMedicion"].getDay()
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 case "viernes":{
@@ -302,7 +302,7 @@ export class DashboardClienteComponent {
                     let numeroDiaSemana = dato["fechaMedicion"].getDay()
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 case "sabado":{
@@ -310,7 +310,7 @@ export class DashboardClienteComponent {
                     let numeroDiaSemana = dato["fechaMedicion"].getDay()
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 case "domingo":{
@@ -321,7 +321,7 @@ export class DashboardClienteComponent {
                     }
                     datos.semanal[numeroDiaSemana - 1].consumo += dato.consumo
                   }
-                    
+
                   break
                 }
                 default:{
@@ -329,17 +329,17 @@ export class DashboardClienteComponent {
                 }
               }
             }
-            
+
           }
         }
 
-        
 
 
-        
+
+
 
       }
-  
+
       this.datos = datos
 
       this.datosARecorrer = this.datos['mensual'];
@@ -347,10 +347,10 @@ export class DashboardClienteComponent {
       document.getElementById('consumo')!.innerText = String((this.sumarConsumo() / 100).toFixed(2));
       document.getElementById('precio')!.innerText = (this.sumarConsumo() * this.precio).toFixed(2);
       this.calcularPrecio(this.precio)
-      
+
     })
   }
-  
+
   //Interactividad para los botones del menu de la tabla
   cambiarVentana(id: string){
     Array.from(document.querySelectorAll('.link-tabla-datos')).forEach(function(item) {
@@ -416,7 +416,7 @@ export class DashboardClienteComponent {
     // Cargo el valor del precio guardado en localstorage y lo coloco en el input del navegador
     let precioEnMemoria = localStorage.getItem('costo-luz') || '0'
     let inputPrecio = document.getElementById('input-precio') as HTMLInputElement;
-    inputPrecio.value = precioEnMemoria; 
+    inputPrecio.value = precioEnMemoria;
   }
 
   cerrarEditorPrecio(){
@@ -431,5 +431,15 @@ export class DashboardClienteComponent {
     document.getElementById('precio')!.innerText = (this.sumarConsumo() * this.precio).toFixed(2);
     this.calcularPrecio(this.precio)
     this.cerrarEditorPrecio()
+  }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
   }
 }
