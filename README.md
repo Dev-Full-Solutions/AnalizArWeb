@@ -1,3 +1,12 @@
+# AnalizArWeb
+AnalizArWeb es una evolución del proyecto original ISPCFullStackProject que forma parte del trabajo final del módulo Práctica Profesionalizante del ISPC correspondiente
+al ciclo lectivo 2024 de tercer año de la TSDWAD.
+
+La documentación del nuevo proyecto AnalizAr, el cual está compuesto por 3 Sprints, puede ser accedida desde el siguiente enlace: https://github.com/Dev-Full-Solutions/AnalizAr.git.
+
+Las mejoras al código de la aplicación web pueden ser accedidas desde el presente repositorio, mientras que las mejoras al código de la aplicación móvil deberán ser accedidas desde 
+el repositorio https://github.com/Dev-Full-Solutions/AnalizArApp.git.
+
 # ISPCFullStackProject
 Proyecto Integrador del módulo FullStack del ISPC Córdoba
 
