@@ -1,8 +1,10 @@
-<section
-  class="contenedor-principal-iluminacion my-4 mx-auto"
-  id="contenedor-principal-alertas"
->
+<section class="contenedor-principal-iluminacion my-4 mx-auto" id="contenedor-principal-alertas">
   <section class="contenedor-alertas" id="contenedor-alertas">
+    
+    <div class="alerta-nueva">
+      <button class="btn-nueva-alerta" id="btn-nueva-alerta" (click)="openModal()">+</button>
+      <h2 class="subtitulo-alerta">Nuevo sistema de Iluminacion</h2>
+    </div>
     <div class="tarjeta" *ngFor="let el of iluminacion; let i = index">
       <div class="alerta" id="div-alerta1">
         <h4>Nombre: {{ el.nombre }}</h4>
@@ -29,16 +31,6 @@
       </div>
     </div>
 
-    <div class="alerta-nueva">
-      <button
-        class="btn-nueva-alerta"
-        id="btn-nueva-alerta"
-        (click)="openModal()"
-      >
-        +
-      </button>
-      <h2 class="subtitulo-alerta">Nuevo sistema de Iluminacion</h2>
-    </div>
   </section>
   <form
     [formGroup]="iluminacionForm"
