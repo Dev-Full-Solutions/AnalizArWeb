@@ -1,3 +1,7 @@
+h1,h2,h3,h4,p {
+    margin: 0;
+}
+
 section.contenedor-principal-alertas {
     width: 90%;
     display: flex;
@@ -33,20 +37,25 @@ div.alerta-nueva {
 div.tarjeta {
     background-color: var(--white);
     height: 250px;
-    width: 80%;
+    width: 275px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: .4rem;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     border-radius: 10px;
     box-shadow: .5rem .8rem 1rem .1rem #1113;
     margin-bottom: 20px;
 }
 
-div.alerta {
-    flex-direction: column;
-    width: 40%;
+div.tarjeta > h4 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.row-complete {
+    grid-column: 1/3;
 }
 
 
@@ -65,10 +74,10 @@ button.btn-nueva-alerta:hover {
 }
 
 .contenedor-botones-alerta {
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    padding: 0 2rem;
 
 }
 
@@ -86,24 +95,12 @@ button.btn-nueva-alerta:hover {
     
 }
 
-.btn-alerta-eliminar {
-    background-color: var(--red);
-    border: 2px solid var(--red);
-    color: var(--white);  
-    margin: 2%;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    font-size: 0.85rem; 
-    text-transform: uppercase; 
-    width: 25%;
-}
-
-
-button.submitBtn {
-    width: max-content; 
+button.btn-alerta-eliminar,
+button.btn-alerta-editar {
+    width: 42%;
     text-align: center;
     text-transform: uppercase;
-    padding: .5rem 1rem;
+    padding: .5rem 0;
     border-radius: 1rem;
     color: var(--white);
     margin: 0 .2rem;

@@ -6,28 +6,14 @@
       <h2 class="subtitulo-alerta">Nuevo sistema de Iluminacion</h2>
     </div>
     <div class="tarjeta" *ngFor="let el of iluminacion; let i = index">
-      <div class="alerta" id="div-alerta1">
-        <h4>Nombre: {{ el.nombre }}</h4>
+        <h2 class="titulo-alerta"> Sistema {{ el.nombre }}</h2>
         <h4>Intensidad: {{ el.intensidad }}</h4>
-        <h4>{{ el.encendido ? "Encendido" : "Apagado" }}</h4>
-        <p class="texto-alerta" id="texto-alerta-alerta1">
-          Detalle: {{ el.detalle }}
-        </p>
-      </div>
+        <h4 class="row-complete">{{ el.encendido ? "Encendido" : "Apagado" }}</h4>
+        <p class="texto-alerta" id="texto-alerta-alerta1"> {{ el.detalle }} </p>
 
       <div class="contenedor-botones-alerta">
-        <button
-          class="btn-alerta-editar"
-          [routerLink]="['/iluminacion/', el.idIluminacion]"
-        >
-          editar
-        </button>
-        <button
-          class="btn-alerta-eliminar"
-          (click)="removeIluminacion(el.idIluminacion)"
-        >
-          eliminar
-        </button>
+        <button class="btn-alerta-editar" [routerLink]="['/iluminacion/', el.idIluminacion]"> editar </button>
+        <button  class="btn-alerta-eliminar" (click)="removeIluminacion(el.idIluminacion)"> eliminar </button>
       </div>
     </div>
 
