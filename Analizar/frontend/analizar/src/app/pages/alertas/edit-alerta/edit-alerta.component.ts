@@ -17,18 +17,18 @@ export class EditAlertaComponent implements OnInit {
   editForm!: FormGroup;
   registroSeleccionado: any;
   loginError: string = '';
-  
+
   ngOnInit(): void {
     this.rutaEdit.params.subscribe(
       (params: Params) => {
         this.alertaId = params['id'];
-        console.log(this.alertaId, params['id']);                
+        console.log(this.alertaId, params['id']);
       })
       this.getAlerta();
       this.getMedidoresByUser()
       console.log(this.getAlerta());
-      
-  }  
+
+  }
 
   initForm(): FormGroup {
     return this.fb.group({
@@ -42,7 +42,7 @@ export class EditAlertaComponent implements OnInit {
   this.medidorService.getMedidores().subscribe((data: any) => {
     this.medidores = data
     console.log(data);
-    
+
   })
  }
   getAlerta() {
@@ -58,7 +58,7 @@ export class EditAlertaComponent implements OnInit {
           fecha: data.fecha
         });
         //console.log(data.fecha);
-        
+
       },
       (error) => {
         console.log(error);
@@ -91,7 +91,18 @@ export class EditAlertaComponent implements OnInit {
    }else{
     this.editForm.markAllAsTouched();
     this.loginError = 'Complete los campos';
-    console.log('Fallo!!');    
+    console.log('Fallo!!');
   }
 }
+
+handleEnterKey(event: Event): void {
+  if (event instanceof KeyboardEvent && event.key === 'Enter') {
+    const targetElement = event.target as HTMLElement;
+    if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+      const linkText = targetElement.textContent?.trim();
+      console.log(`Se presionó Enter en el enlace: ${linkText}`);
+    }
+  }
+}
+
 }

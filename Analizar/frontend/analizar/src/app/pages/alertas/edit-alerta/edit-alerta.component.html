@@ -3,21 +3,21 @@
         <p class="text-danger">{{loginError}}</p>
         <p class="title-formulario-alerta">Editar alerta</p>
         <div class="inputContainer">
-          <input type="hidden" name="idAlerta" id="input-idAlerta-edit">
-          <input type="number" formControlName="valor" class="input" placeholder="Ingresa la cantidad de w/h" id="input-cantidadwh-edit">
+          <input type="hidden" name="idAlerta" id="input-idAlerta-edit" tabindex="0" (keyup.enter)="handleEnterKey($event)">
+          <input type="number" formControlName="valor" class="input" placeholder="Ingresa la cantidad de w/h" id="input-cantidadwh-edit" tabindex="0" (keyup.enter)="handleEnterKey($event)">
           <label for="" class="label"> Cantidad w/h </label>
         </div>
         <div class="inputContainer">
           <select class="tipo-alerta" name="medidor" id="medidor" formControlName="medidor">
-            <option class="label" *ngFor="let medidor of medidores" [value]="medidor.idMedidor" >{{ medidor.nombre }} - {{ medidor.identificador }}</option>
+            <option class="label" *ngFor="let medidor of medidores" [value]="medidor.idMedidor" tabindex="0" (keyup.enter)="handleEnterKey($event)">{{ medidor.nombre }} - {{ medidor.identificador }} </option>
           </select>
         </div>
         <div class="inputContainer">
-          <input type="date" name="typeAlert"class="input" formControlName="fechaAlta" id="typeAlert">
+          <input type="date" name="typeAlert"class="input" formControlName="fechaAlta" id="typeAlert" tabindex="0" (keyup.enter)="handleEnterKey($event)">
         </div>
         <div class="btnContainer">
-          <button type="button" class= "submitBtn saveBtn" (click)="updateAlert()" id="btn-save-edit-alerta">Guardar</button>
-          <button type="button" class= "submitBtn cancelBtn" routerLink="/alertas" id="btn-close-edit-alerta">Cancelar</button>
+          <button type="button" class= "submitBtn saveBtn" (click)="updateAlert()" id="btn-save-edit-alerta" tabindex="0" (keyup.enter)="handleEnterKey($event)">Guardar</button>
+          <button type="button" class= "submitBtn cancelBtn" routerLink="/alertas" id="btn-close-edit-alerta" tabindex="0" (keyup.enter)="handleEnterKey($event)">Cancelar</button>
         </div>
       </form>
 </section>
