@@ -1,4 +1,8 @@
-section.contenedor-principal-alertas {
+h1,h2,h3,h4,p {
+    margin: 0;
+}
+
+section.contenedor-principal-iluminacion {
     width: 90%;
     display: flex;
     flex-flow: column nowrap;
@@ -13,21 +17,49 @@ section.contenedor-alertas {
     grid-template-columns: repeat(3, max-content);
     justify-content: center;
     gap: 5rem;
+
+    margin-bottom: 10vh;
 }
 
-div.alerta {
-   background-color: var(--white);
-   height: 250px;
-   width: 275px;
-   display: flex;
-   flex-flow: column nowrap;
-   justify-content: center;
-   align-items: center;
-   gap: .4rem;
-   padding: 1rem 2rem;
-   border-radius: 10px;
-   box-shadow: .5rem .8rem 1rem .1rem #1113;
+div.alerta-nueva {
+    background-color: var(--white);
+    height: 250px;
+    width: 275px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: .5rem .8rem 1rem .1rem #1113;
 }
+
+
+div.tarjeta {
+    background-color: var(--white);
+    height: 250px;
+    width: 275px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .4rem;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: .5rem .8rem 1rem .1rem #1113;
+    margin-bottom: 20px;
+}
+
+div.tarjeta > h4 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.row-complete {
+    grid-column: 1/3;
+}
+
 
 button.btn-nueva-alerta {
     border: 2px solid var(--green-700);
@@ -41,6 +73,40 @@ button.btn-nueva-alerta {
 button.btn-nueva-alerta:hover {
     background-color: var(--white);
     color: var(--green-700);
+}
+
+.contenedor-botones-alerta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+
+}
+
+
+.btn-alerta-editar {
+    background-color: var(--green-700);
+    border: 2px solid var(--green-700);
+    color: var(--white);
+    margin: 2%;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    width: 25%;
+    
+}
+
+button.btn-alerta-eliminar,
+button.btn-alerta-editar {
+    width: 42%;
+    text-align: center;
+    text-transform: uppercase;
+    padding: .5rem 0;
+    border-radius: 1rem;
+    color: var(--white);
+    margin: 0 .2rem;
+    font-size: .85rem;
 }
 
 h2.subtitulo-alerta {
@@ -115,6 +181,7 @@ form.formulario-nueva-alerta {
 p.title-formulario-alerta {
     text-transform: uppercase;
     font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 div.inputContainer {
@@ -170,6 +237,42 @@ label.label {
     z-index: 0;
 }
 
+.inputContainer-checkbox,
+.inputContainer-range {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1.1rem;
+}
+
+.inputContainer > input.input-checkbox,
+.inputContainer > input.input-intensidad {
+    position: static;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+}
+
+.inputContainer > input.input-intensidad {
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.inputContainer > input.input-intensidad {
+    width: 100%;
+}
+
+.inputContainer > label.label-checkbox,
+.inputContainer > label.label-intensidad {
+    position: static;
+}
+
 ::placeholder {
     color: transparent;
 }
@@ -206,6 +309,9 @@ div.btnContainer {
 .ng-invalid:not(form).ng-touched {
     border-left: 5px solid var(--red);
 }
+
+
+
 /* ---------- @Medias queries ---------- */
 
 @media screen and (max-width: 1024px){
@@ -215,11 +321,10 @@ div.btnContainer {
         gap: 3rem;
     }
 
-    div.contenedor-botones-alerta
-     {
+    div.contenedor-botones-alerta {
         width: 100%;
     }
-  
+
     button.btn-alerta {
         width: 42%;
         margin: 0 .2rem;
@@ -239,13 +344,12 @@ div.btnContainer {
 
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 758px){
 
     section.contenedor-alertas {
         grid-template-columns: 1fr;
         justify-items: center;
     }
-
     
     form.formulario-nueva-alerta {
         width: 70vw;

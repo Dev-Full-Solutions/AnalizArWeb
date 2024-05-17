@@ -22,5 +22,6 @@ urlpatterns = [
     path('alertas/', include('alertas.urls')),
     path('medidores/', include('medidores.urls')),
     path('users/', include('users.urls')),
+    path('iluminacion/', include('iluminacion.urls')),
     path('admin/', admin.site.urls),
 ]
