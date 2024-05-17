@@ -16,12 +16,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { EditAlertaComponent } from './pages/alertas/edit-alerta/edit-alerta.component';
 import { MedidoresComponent } from './pages/medidores/medidores.component';
 import { EditProductoComponent } from './pages/productos/edit-producto/edit-producto.component';
+import { IluminacionComponent } from './pages/iluminacion/iluminacion.component';
+import { EditIluminacionComponent } from './pages/iluminacion/edit-iluminacion/edit-iluminacion.component';
 
 const routes: Routes = [
   //Definir las rutas de la app
   { path: 'medidores', component: MedidoresComponent, canActivate:[AuthGuard]},
   { path: 'alertas', component: AlertasComponent, canActivate:[AuthGuard]},
   { path: 'alertas/:id', component: EditAlertaComponent, canActivate:[AuthGuard]},
+  { path: 'iluminacion', component: IluminacionComponent, canActivate:[AuthGuard]},
+  { path: 'iluminacion/:id', component: EditIluminacionComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent},
   {path: '', redirectTo:'/home', pathMatch:'full'},
   { path: 'productos', component: ProductosComponent},

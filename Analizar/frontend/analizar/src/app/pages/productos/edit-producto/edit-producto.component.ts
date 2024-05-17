@@ -37,7 +37,7 @@ export class EditProductoComponent implements OnInit {
     // Obtener datos productos y mostrarlos en el formulario
     this.productosService.getProductoById(this.productoId).subscribe((data) => {
       console.log(data);
-      
+
       this.editProducto.patchValue({
         nombre: data.nombre,
         descripcion: data.descripcion,
@@ -52,15 +52,15 @@ export class EditProductoComponent implements OnInit {
   updateProducto(){
     const productos = {
       "nombre": this.editProducto.value.nombre,
-      "descripcion": this.editProducto.value.descripcion, 
-      "rutaImagen": this.editProducto.value.rutaImagen, 
-      "precio": this.editProducto.value.precio, 
+      "descripcion": this.editProducto.value.descripcion,
+      "rutaImagen": this.editProducto.value.rutaImagen,
+      "precio": this.editProducto.value.precio,
       "cantidadDisponible": this.editProducto.value.cantidadDisponible
     }
     if(this.editProducto.valid){
       this.productosService.updateProductoById(this.productoId, productos).subscribe((product) => {
         console.log('Producto editado con exito', product);
-        this.router.navigate(['/productos']);        
+        this.router.navigate(['/productos']);
       }, (error: any) => {
         this.loginError = 'Lo siento ocurrio un error al editar la alerta, revise que los campos esten completos';
       })
@@ -69,5 +69,15 @@ export class EditProductoComponent implements OnInit {
       this.loginError = 'Complete los campos';
     }
 
+  }
+
+  handleEnterKey(event: Event): void {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      const targetElement = event.target as HTMLElement;
+      if (targetElement.tagName === 'A' && targetElement.classList.contains('nav-link')) {
+        const linkText = targetElement.textContent?.trim();
+        console.log(`Se presionó Enter en el enlace: ${linkText}`);
+      }
+    }
   }
 }
