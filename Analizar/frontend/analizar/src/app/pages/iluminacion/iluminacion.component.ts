@@ -34,7 +34,7 @@ constructor(private router: Router, private iluminacionService: IluminacionServi
    saveIluminacion() {
     const nombre = this.iluminacionForm.get('nombre')?.value;
     const detalle = this.iluminacionForm.get('detalle')?.value;
-    const intensidad = parseInt(this.iluminacionForm.get('intensidad')?.value || '100');
+    const intensidad = parseInt(this.iluminacionForm.get('intensidad')?.value);
     const encendido = this.iluminacionForm.get('encendido')?.value; 
     const identificador = this.iluminacionForm.get('identificador')?.value || '';
     let userId = Number(localStorage.getItem('userId')!);

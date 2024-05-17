@@ -5,8 +5,8 @@ from users.models import User
 # Create your models here.
 
 def validate_range(value):
-    if value < 0 or value > 99:
-        raise ValidationError(f'Value must be between 0 and 99. Received {value}.')
+    if value < 0 or value > 100:
+        raise ValidationError(f'Value must be between 0 and 100. Received {value}.')
 
 class Iluminacion(models.Model):
     idIluminacion = models.AutoField(primary_key=True)
