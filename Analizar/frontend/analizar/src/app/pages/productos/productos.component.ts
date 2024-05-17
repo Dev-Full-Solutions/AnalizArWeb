@@ -115,12 +115,35 @@ export class ProductosComponent implements OnInit {
 
 
   removeProducto(id: number){
-    this.productosService.removeProducto(id).subscribe((product: any) => {
-      console.log('Producto eliminado con exito:', product);
-      this.getProductos()
-    }, (error: any) => {
-      console.error('Hubo un error al eliminar el producto', error);
-    })
+
+    Swal.fire({
+      title: "Estás seguro de eliminar el producto?",
+      text: "No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+  
+        
+        this.productosService.removeProducto(id).subscribe((product: any) => {
+          console.log('Producto eliminado con exito:', product);
+          this.getProductos()
+        }, (error: any) => {
+          console.error('Hubo un error al eliminar el producto', error);
+        })
+  
+        Swal.fire({
+          title: "Eliminado!",
+          text: "El producto ha sido eliminado con éxito",
+          icon: "success"
+        });
+      }
+    });
+
+    
   }
 
   agregarCarrito(producto:any, cantidad:number, tipoProducto:string){
