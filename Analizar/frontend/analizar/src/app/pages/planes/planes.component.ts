@@ -28,12 +28,34 @@ export class PlanesComponent implements OnInit {
     return this.authService.getIsAdmin();
   }
   removeProducto(id: number){
-    this.productosService.removeProducto(id).subscribe((product: any) => {
-      console.log('Producto eliminado con exito:', product);
-      this.getServicios()
-    }, (error: any) => {
-      console.error('Hubo un error al eliminar el producto', error);
-    })
+
+    Swal.fire({
+      title: "Estás seguro de eliminar el plan?",
+      text: "No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+  
+        
+        this.productosService.removeProducto(id).subscribe((product: any) => {
+          console.log('Plan eliminado con exito:', product);
+          this.getServicios()
+        }, (error: any) => {
+          console.error('Hubo un error al eliminar el plan', error);
+        })
+  
+        Swal.fire({
+          title: "Eliminado!",
+          text: "El plan ha sido eliminado con éxito",
+          icon: "success"
+        });
+      }
+    });
+
   }
 
   agregarCarrito(producto:any, tipoProducto:string){
