@@ -237,11 +237,6 @@ label.label {
     z-index: 0;
 }
 
-.inputContainer > input.input-intensidad {
-    margin: 1rem 0;
-    padding: 0;
-}
-
 .inputContainer-checkbox,
 .inputContainer-range {
     display: flex;
@@ -262,6 +257,11 @@ label.label {
     outline: none;
     background: none;
     z-index: 1;
+}
+
+.inputContainer > input.input-intensidad {
+    margin: 1rem 0;
+    padding: 0;
 }
 
 .inputContainer > input.input-intensidad {
