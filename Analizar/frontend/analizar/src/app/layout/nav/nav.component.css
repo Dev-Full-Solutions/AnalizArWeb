@@ -12,9 +12,10 @@
     cursor: pointer;
 }
 
-/* .font.active {
+.font.active {
     background: #444;
-} */
+    color: white;
+}
 
 .font:nth-child(2) {
     font-size: 1.25em;
