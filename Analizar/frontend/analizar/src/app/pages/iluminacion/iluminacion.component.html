@@ -18,85 +18,35 @@
     </div>
 
   </section>
-  <form
-    [formGroup]="iluminacionForm"
-    class="formulario-nueva-alerta"
-    id="addAlert"
-  >
+  <form [formGroup]="iluminacionForm" class="formulario-nueva-alerta" id="addAlert">
     <p class="title-formulario-alerta">Nuevo sistema de Iluminacion</p>
     <p class="text-danger">{{ loginError }}</p>
     <div class="inputContainer">
-      <input
-        type="text"
-        class="input"
-        placeholder="Ingrese un nombre para el sistema de iluminacion"
-        formControlName="nombre"
-        id="input-cantidadwh-new"
-        name="input-cantidadwh-new"
-      />
+      <input type="text" class="input" placeholder="Ingrese un nombre para el sistema de iluminacion" formControlName="nombre" id="input-cantidadwh-new" name="input-cantidadwh-new"/>
       <label for="" class="label"> Nombre </label>
     </div>
     <div class="inputContainer">
-      <input
-        type="text"
-        class="input"
-        placeholder="Ingrese un detalle del sistema de iluminacion"
-        formControlName="detalle"
-        id="input-cantidadwh-new"
-        name="input-cantidadwh-new"
-      />
+      <input type="text" class="input" placeholder="Ingrese un detalle del sistema de iluminacion" formControlName="detalle" id="input-cantidadwh-new" name="input-cantidadwh-new"/>
       <label for="" class="label"> Detalle </label>
     </div>
     <div class="inputContainer">
-      <input
-        type="text"
-        class="input"
-        placeholder="Ingrese un Identificador para el sistema de iluminacion"
-        formControlName="identificador"
-        id="input-cantidadwh-new"
-        name="input-cantidadwh-new"
-      />
+      <input type="text" class="input" placeholder="Ingrese un Identificador para el sistema de iluminacion" formControlName="identificador" id="input-cantidadwh-new" name="input-cantidadwh-new"/>
       <label for="" class="label"> Identificador </label>
     </div>
-    <div class="inputContainer">
+    <div class="inputContainer inputContainer-range">
       <label for="intensidad" class="label-intensidad">Intensidad:</label>
-      <input
-        type="range"
-        class="input"
-        formControlName="intensidad"
-        id="intensidad"
-        name="intensidad"
-        min="0"
-        max="100"
-      />
-      <span *ngIf="iluminacionForm && iluminacionForm.get('intensidad')">{{
-        iluminacionForm.get("intensidad")?.value
-      }}</span>
+      <input type="range" class="input input-intensidad" formControlName="intensidad" id="intensidad" name="intensidad" min="0" max="100"/>
+      <span *ngIf="iluminacionForm && iluminacionForm.get('intensidad')">{{ iluminacionForm.get("intensidad")?.value }}</span>
     </div>
 
-    <div class="inputContainer">
-      <input type="checkbox" formControlName="encendido" class="input" placeholder="Encender o apagar" id="input-cantidadwh-edit">
-      <label for="" class="label"> Encendido </label>
+    <div class="inputContainer inputContainer-checkbox">
+      <label for="input-encendido-edit" class="label label-checkbox"> Encendido </label>
+      <input type="checkbox" formControlName="encendido" class="input input-checkbox" placeholder="Encender o apagar" id="input-encendido-edit">
     </div>
     
-
     <div class="btnContainer">
-      <button
-        type="submit"
-        class="submitBtn saveBtn"
-        (click)="saveIluminacion()"
-        id="btn-save-nueva-alerta"
-      >
-        Guardar
-      </button>
-      <button
-        type="button"
-        class="submitBtn cancelBtn"
-        (click)="closeModal()"
-        id="btn-close-nueva-alerta"
-      >
-        Cancelar
-      </button>
+      <button type="submit" class="submitBtn saveBtn" (click)="saveIluminacion()" id="btn-save-nueva-alerta"> Guardar </button>
+      <button type="button" class="submitBtn cancelBtn" (click)="closeModal()" id="btn-close-nueva-alerta"> Cancelar </button>
     </div>
   </form>
 </section>
