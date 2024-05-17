@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MedidoresService } from 'src/app/service/medidores.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-medidores',
@@ -47,14 +48,36 @@ constructor(private router: Router, private medidorService: MedidoresService, pr
     this.loginError = 'Complete los campos';
   }
  }
- removeAlert(id:number){
-  this.medidorService.removeMedidor(id).subscribe((medidor) => {
-    console.log('Alerta eliminada con éxito:', medidor);
-    this.closeModal();
-    this.getMedidores()
-  }, (error: any) => {
-    console.error('Hubo un error al eliminar la alerta', error);
-  })
+ removeAlert(id:number){  
+
+  Swal.fire({
+    title: "Estás seguro de eliminar el medidor?",
+    text: "No podrás revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      this.medidorService.removeMedidor(id).subscribe((medidor) => {
+        console.log('Medidor eliminado con éxito:', medidor);
+        this.closeModal();
+        this.getMedidores()
+      }, (error: any) => {
+        console.error('Hubo un error al eliminar el medidor', error);
+      })
+
+      Swal.fire({
+        title: "Eliminado!",
+        text: "El medidor ha sido eliminado con éxito",
+        icon: "success"
+      });
+    }
+  });
+
+  
 
  }
 
