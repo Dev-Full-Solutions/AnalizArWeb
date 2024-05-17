@@ -59,7 +59,7 @@ export class EditIluminacionComponent implements OnInit {
   }
   updateIluminacion(){
 
-    const intensidad = parseInt(this.editForm.get('intensidad')?.value || '100');
+    const intensidad = parseInt(this.editForm.get('intensidad')?.value);
     const encendido = this.editForm.get('encendido')?.value; 
     if(this.editForm.valid){
 
