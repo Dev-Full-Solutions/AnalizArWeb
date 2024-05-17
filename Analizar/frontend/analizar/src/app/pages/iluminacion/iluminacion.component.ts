@@ -35,7 +35,7 @@ constructor(private router: Router, private iluminacionService: IluminacionServi
     const nombre = this.iluminacionForm.get('nombre')?.value;
     const detalle = this.iluminacionForm.get('detalle')?.value;
     const intensidad = parseInt(this.iluminacionForm.get('intensidad')?.value);
-    const encendido = this.iluminacionForm.get('encendido')?.value; 
+    const encendido = this.iluminacionForm.get('encendido')?.value || false; 
     const identificador = this.iluminacionForm.get('identificador')?.value || '';
     let userId = Number(localStorage.getItem('userId')!);
     console.log(nombre, detalle, identificador, intensidad, encendido, userId);
@@ -107,7 +107,7 @@ constructor(private router: Router, private iluminacionService: IluminacionServi
       nombre: ['', [Validators.required]],
       detalle: ['', [Validators.required]],
       intensidad: ['100', [Validators.required]],
-      encendido: [true, [Validators.required]],
+      encendido: [true, []],
       identificador: [''],
     })
   }
