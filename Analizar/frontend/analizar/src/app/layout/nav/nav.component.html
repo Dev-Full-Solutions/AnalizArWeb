@@ -19,13 +19,13 @@
           </li>
             -->
             <div class="container-font">
-              <li class="nav-item font" (click)="changeFontSize(14)">
+              <li #one class="nav-item font" data-fontSize="14" (click)="changeFontSize(one)">
                 A
               </li>
-              <li class="nav-item font" (click)="changeFontSize(16)">
+              <li #two class="nav-item font" data-fontSize="16" (click)="changeFontSize(two)">
                 A
               </li>
-              <li class="nav-item font" (click)="changeFontSize(18)">
+              <li #three class="nav-item font" data-fontSize="18" (click)="changeFontSize(three)">
                 A
               </li>
             </div>
