@@ -2,24 +2,14 @@
     <form  [formGroup]="editForm" class="formulario-nueva-alerta" id="editAlert">
         <p class="text-danger">{{loginError}}</p>
         <p class="title-formulario-alerta">Operar sistema de Iluminacion</p>
-        <div class="inputContainer">
+        <div class="inputContainer inputContainer-range">
           <label for="intensidad" class="label-intensidad">Intensidad:</label>
-          <input
-            type="range"
-            class="input"
-            formControlName="intensidad"
-            id="intensidad"
-            name="intensidad"
-            min="0"
-            max="100"
-          />
-          <span *ngIf="editForm && editForm.get('intensidad')">{{
-            editForm.get("intensidad")?.value
-          }}</span>
+          <input type="range" class="input input-intensidad" formControlName="intensidad" id="intensidad" name="intensidad" min="0" max="100"/>
+          <span *ngIf="editForm && editForm.get('intensidad')">{{ editForm.get("intensidad")?.value }}</span>
         </div>
-        <div class="inputContainer">
-            <input type="checkbox" formControlName="encendido" class="input" placeholder="Encender o apagar" id="input-cantidadwh-edit">
-            <label for="" class="label"> Encendido </label>
+        <div class="inputContainer inputContainer-checkbox">
+            <label for="input-encendido-edit" class="label label-checkbox"> Encendido </label>
+            <input type="checkbox" formControlName="encendido" class="input input-checkbox" placeholder="Encender o apagar" id="input-encendido-edit">
           </div>
         <div class="btnContainer">
           <button type="button" class= "submitBtn saveBtn" (click)="updateIluminacion()" id="btn-save-edit-alerta">Guardar</button>
