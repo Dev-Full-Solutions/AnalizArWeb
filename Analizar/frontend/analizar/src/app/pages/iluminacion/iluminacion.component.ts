@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators, FormControl  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IluminacionService } from 'src/app/service/iluminacion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-iluminacion',
@@ -56,13 +57,35 @@ constructor(private router: Router, private iluminacionService: IluminacionServi
   }
   
  removeIluminacion(id:number){  
-  this.iluminacionService.removeIluminacion(id).subscribe((iluminacion) => {
-    console.log('Iluminacion eliminada con éxito:', iluminacion);
-    this.closeModal();
-    this.getIluminacion()
-  }, (error: any) => {
-    console.error('Hubo un error al eliminar la Iluminacion', error);
-  })
+
+  Swal.fire({
+    title: "Estás seguro de eliminar el sistema de iluminación?",
+    text: "No podrás revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      this.iluminacionService.removeIluminacion(id).subscribe((iluminacion) => {
+        console.log('Iluminacion eliminada con éxito:', iluminacion);
+        this.closeModal();
+        this.getIluminacion()
+      }, (error: any) => {
+        console.error('Hubo un error al eliminar la Iluminacion', error);
+      })
+
+      Swal.fire({
+        title: "Eliminado!",
+        text: "El sistema de iluminación ha sido eliminado con éxito",
+        icon: "success"
+      });
+    }
+  });
+
+  
 
  }
 
